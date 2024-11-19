@@ -5,14 +5,18 @@ using UnityEngine.UI;
 // Script should be attached with UI gameobject that has image gameobject as a children
 public class BabyHealthBarUI : MonoBehaviour
 {
-    public static BabyHealthBarUI Instance {  get; set; }   
+    public static BabyHealthBarUI Instance {  get; set; }
 
-
+    [Tooltip("Attach the image that will be filled when mother eat healthy things.")]
     [SerializeField] Image babyHealthBarImage;
 
     [SerializeField] int totalBabyHealth = 100;
 
     public int currentBabyHealth;
+    private void Start()
+    {
+        currentBabyHealth = 20;
+    }
 
     private void Awake()
     {

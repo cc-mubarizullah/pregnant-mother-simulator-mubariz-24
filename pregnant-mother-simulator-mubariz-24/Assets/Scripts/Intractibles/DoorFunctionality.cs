@@ -1,12 +1,13 @@
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class DoorFunctionality : IIntractShowVisuals, IInteractWithIneractables 
 {
     readonly string doorOpenText = "Open Door!";
     readonly string doorCloseText = "Close Door!";
 
-    const string OPEN_DOOR = "Open";
+    const string OPEN_DOOR = "IsOpen";
 
     bool isOpen;
     Animator animator;
