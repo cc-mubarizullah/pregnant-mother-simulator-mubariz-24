@@ -9,11 +9,11 @@ public class DoorFunctionality : IIntractShowVisuals, IInteractWithIneractables
 
     const string OPEN_DOOR = "IsOpen";
 
-    bool isOpen;
+    bool isDoorOpen;
     Animator animator;
     public void Start()
     {
-        isOpen = false;
+        isDoorOpen = false;
         animator = GetComponent<Animator>();
     }
 
@@ -30,7 +30,7 @@ public class DoorFunctionality : IIntractShowVisuals, IInteractWithIneractables
 
     string OpenCloseText()
     {
-        if (isOpen)
+        if (isDoorOpen)
         {
             return doorCloseText;
         }
@@ -43,14 +43,14 @@ public class DoorFunctionality : IIntractShowVisuals, IInteractWithIneractables
     public void PhysicalInteract()
     {
         Debug.Log("this message is from door");
-        if (!isOpen)
+        if (!isDoorOpen)
         {
-        isOpen = true;
+        isDoorOpen = true;
         animator.SetBool(OPEN_DOOR, true);
         }
         else
         {
-        isOpen = false;
+        isDoorOpen = false;
         animator.SetBool(OPEN_DOOR, false);
         }
     }
