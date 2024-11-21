@@ -56,19 +56,29 @@ public class Player : MonoBehaviour
     private float cinemachineTargetPitch;
     private float rotationVelocity;
     float mealEatenTimer;
+    bool canInteract = true;
     
 
 
-    FoodItem[] foodItems;   // this varible will store ref of all the gameobjects which has this script as a component.
+    FoodItem[] foodItems;   // this varible will store ref of all the gameobjects which has FoodItem script as a component.
+    Medicine[] medicines;   // this varible will store ref of all the gameobjects which has Medicine script as a component.
 
     private void Start()
     {
         foodItems = FindObjectsByType<FoodItem>(FindObjectsInactive.Include,FindObjectsSortMode.None);
-
+       
         foreach (FoodItem item in foodItems)
         {
             item.OnEatingHealthy += Item_OnEatingHealthy;
         }
+
+        medicines = FindObjectsByType<Medicine>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+
+        foreach(Medicine medicine in medicines)
+        {
+            medicine.OnEatingRightMedicine += Item_OnEatingHealthy;
+        }
+        
     }
 
     private void Awake()
@@ -154,44 +164,47 @@ public class Player : MonoBehaviour
 
     private void RaycastingForInteractbles()
     {
-        Ray ray = new Ray(cameraRootGameobject.transform.position, cameraRootGameobject.transform.forward);
-        RaycastHit hitInfo;
-
-        bool hasHitInterectables = Physics.Raycast(ray, out hitInfo, distanceOfRaycast, interactLayer);
-
-        if (hasHitInterectables)
+        if (canInteract)
         {
-            IInteractWithIneractables interactable = hitInfo.collider.GetComponent<IInteractWithIneractables>(); // get the interface of interactables items
-            if (interactable != null)
-            {
-              // INTERACTION HERE
-              OnIntract?.Invoke(this, new OnIntractEventArgs { intracting = true});
-              interactable.Interact(); 
+            Ray ray = new Ray(cameraRootGameobject.transform.position, cameraRootGameobject.transform.forward);
+            RaycastHit hitInfo;
 
-                if (gameInput.InteractButtonPressed() && !gameInput.hasInteracted)
+            bool hasHitInterectables = Physics.Raycast(ray, out hitInfo, distanceOfRaycast, interactLayer);
+
+            if (hasHitInterectables)
+            {
+                IInteractWithIneractables interactable = hitInfo.collider.GetComponent<IInteractWithIneractables>(); // get the interface of interactables items
+                if (interactable != null)
                 {
-                    // PHYSICAL INTERACTION HERE
-                    interactable.PhysicalInteract();
-                    gameInput.hasInteracted = true;
-                }
-                IInventoryHandler grabAble = hitInfo.collider.GetComponent<IInventoryHandler>();
-                if (grabAble != null)
-                {
-                    if (gameInput.GrabButtonPressed() && !gameInput.hasGrabbed)
+                    // INTERACTION HERE
+                    OnIntract?.Invoke(this, new OnIntractEventArgs { intracting = true });
+                    interactable.Interact();
+
+                    if (gameInput.InteractButtonPressed() && !gameInput.hasInteracted)
                     {
-                        // GRAB INTERACTION HERE
-                        grabAble.Grab();
+                        // PHYSICAL INTERACTION HERE
+                        interactable.PhysicalInteract();
                         gameInput.hasInteracted = true;
                     }
+                    IInventoryHandler grabAble = hitInfo.collider.GetComponent<IInventoryHandler>();
+                    if (grabAble != null)
+                    {
+                        if (gameInput.GrabButtonPressed() && !gameInput.hasGrabbed)
+                        {
+                            // GRAB INTERACTION HERE
+                            grabAble.Grab();
+                            gameInput.hasInteracted = true;
+                        }
+                    }
+
+
                 }
-                
 
             }
-
-        }
-        else
-        {
-            OnIntract?.Invoke(this, new OnIntractEventArgs { intracting = false });
+            else
+            {
+                OnIntract?.Invoke(this, new OnIntractEventArgs { intracting = false });
+            }
         }
     }
 
@@ -205,7 +218,7 @@ public class Player : MonoBehaviour
         mealEatenTimer -= Time.deltaTime;
         if (mealEatenTimer <= 0)
         {
-            BabyHealthBarUI.Instance.UpdateBabyHealthUI(GameManager.Instance.healthDecNotEating);
+            BabyHealthBarUI.Instance.UpdateBabyHealthUI(PrefrencesManager.Instance.healthDecNotEating);
             mealEatenTimer = mealEatenTimerMax;
         }
     }

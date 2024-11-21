@@ -4,6 +4,8 @@ using UnityEngine;
 public class Medicine : MonoBehaviour, IInteractWithIneractables
 {
     [SerializeField] IntractiblesSO intractiblesSO;
+    public event EventHandler OnEatingRightMedicine;
+    public event EventHandler OnEatingWrongMedicine;
 
     enum MedicineType
     {
@@ -32,7 +34,8 @@ public class Medicine : MonoBehaviour, IInteractWithIneractables
 
                 if (BabyHealthBarUI.Instance.currentBabyHealth < 94)
                 {
-                    BabyHealthBarUI.Instance.UpdateBabyHealthUI(GameManager.Instance.healthGainedbyRightAction);
+                    BabyHealthBarUI.Instance.UpdateBabyHealthUI(PrefrencesManager.Instance.healthGainedbyRightAction);
+                    OnEatingRightMedicine?.Invoke(this, EventArgs.Empty);
                 }
 
                 break;
@@ -40,7 +43,8 @@ public class Medicine : MonoBehaviour, IInteractWithIneractables
 
                 if (BabyHealthBarUI.Instance.currentBabyHealth > 0)
                 {
-                    BabyHealthBarUI.Instance.UpdateBabyHealthUI(GameManager.Instance.healthLooseByWrongAction);
+                    BabyHealthBarUI.Instance.UpdateBabyHealthUI(PrefrencesManager.Instance.healthLooseByWrongAction);
+                    OnEatingWrongMedicine?.Invoke(this, EventArgs.Empty);
                 }
 
                 break;

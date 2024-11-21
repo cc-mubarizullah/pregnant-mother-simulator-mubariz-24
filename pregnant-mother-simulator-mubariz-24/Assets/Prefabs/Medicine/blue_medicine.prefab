@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7371638347799728959}
   - component: {fileID: 6607669288875331833}
   - component: {fileID: 395324049219499091}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: blue_medicine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,8 +107,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 2.7558632, z: 1.635376}
-  m_Center: {x: 0, y: -0.025752496, z: -0.10315037}
+  m_Size: {x: 2.0037985, y: 3.3237917, z: 2.37932}
+  m_Center: {x: -0.013192682, y: 0.007268414, z: 0.057495635}
 --- !u!114 &395324049219499091
 MonoBehaviour:
   m_ObjectHideFlags: 0

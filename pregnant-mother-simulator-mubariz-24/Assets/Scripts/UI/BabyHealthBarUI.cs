@@ -10,12 +10,13 @@ public class BabyHealthBarUI : MonoBehaviour
     [Tooltip("Attach the image that will be filled when mother eat healthy things.")]
     [SerializeField] Image babyHealthBarImage;
 
+    public int currentBabyHealth;
     [SerializeField] int totalBabyHealth = 100;
 
-    public int currentBabyHealth;
+    
     private void Start()
     {
-        currentBabyHealth = 20;
+        currentBabyHealth = 50;
     }
 
     private void Awake()

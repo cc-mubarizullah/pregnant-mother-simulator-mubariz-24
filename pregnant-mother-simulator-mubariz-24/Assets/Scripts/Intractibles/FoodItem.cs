@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class FoodItem : MonoBehaviour, IInteractWithIneractables, IInventoryHandler
 {
     public event EventHandler OnEatingHealthy;
+    public event EventHandler OnEatingUnhealthy;
 
     enum FoodType
     {
@@ -38,7 +39,7 @@ public class FoodItem : MonoBehaviour, IInteractWithIneractables, IInventoryHand
                 if (BabyHealthBarUI.Instance.currentBabyHealth < 94)
                 {
                     OnEatingHealthy?.Invoke(this, EventArgs.Empty);
-                    BabyHealthBarUI.Instance.UpdateBabyHealthUI(GameManager.Instance.healthGainedbyRightAction);
+                    BabyHealthBarUI.Instance.UpdateBabyHealthUI(PrefrencesManager.Instance.healthGainedbyRightAction);
                 }
 
                 break;
@@ -47,7 +48,8 @@ public class FoodItem : MonoBehaviour, IInteractWithIneractables, IInventoryHand
 
                 if (BabyHealthBarUI.Instance.currentBabyHealth > 0)
                 {
-                    BabyHealthBarUI.Instance.UpdateBabyHealthUI(GameManager.Instance.healthLooseByWrongAction);
+                    OnEatingUnhealthy?.Invoke(this, EventArgs.Empty);
+                    BabyHealthBarUI.Instance.UpdateBabyHealthUI(PrefrencesManager.Instance.healthLooseByWrongAction);
                 }
                 
                 break;
@@ -56,6 +58,8 @@ public class FoodItem : MonoBehaviour, IInteractWithIneractables, IInventoryHand
 
         Destroy(gameObject);
     }
+
+
 
     public void Grab()
     {

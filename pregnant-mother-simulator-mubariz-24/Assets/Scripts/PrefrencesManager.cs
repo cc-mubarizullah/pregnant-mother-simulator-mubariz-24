@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class PrefrencesManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
+    public static PrefrencesManager Instance { get; private set; }
 
     private void Awake()
     {

@@ -130,8 +130,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.08431538, y: 0.13678871, z: 0.08431538}
-  m_Center: {x: 0, y: 0.068398155, z: 0}
+  m_Size: {x: 0.11138868, y: 0.16825226, z: 0.11541311}
+  m_Center: {x: 0.00036586076, y: 0.072056726, z: -0.002743911}
 --- !u!114 &-5841316074328030439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,4 +145,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intractiblesSO: {fileID: 11400000, guid: 125fd836135216940bc8434d941268ab, type: 2}
-  medicineType: 0
+  medicineType: 1

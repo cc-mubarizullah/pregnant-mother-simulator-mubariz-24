@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7371638347799728959}
   - component: {fileID: 6607669288875331833}
   - component: {fileID: 395324049219499091}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: pink_medicine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,8 +107,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 2.7558632, z: 1.635376}
-  m_Center: {x: 0, y: -0.025752496, z: -0.10315037}
+  m_Size: {x: 2.001637, y: 3.0739741, z: 1.8993251}
+  m_Center: {x: 0.027051818, y: -0.015595928, z: -0.032087725}
 --- !u!114 &395324049219499091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,4 +122,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intractiblesSO: {fileID: 11400000, guid: 125fd836135216940bc8434d941268ab, type: 2}
-  medicineType: 0
+  medicineType: 1
