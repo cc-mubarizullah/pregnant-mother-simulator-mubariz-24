@@ -658,7 +658,7 @@ Transform:
   m_GameObject: {fileID: 60372049}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.92, y: 4.25, z: 0.17}
+  m_LocalPosition: {x: 1.92, y: 4.25, z: 0.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2125,7 +2125,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.92, y: 4.25, z: 0.17}
+  m_LocalPosition: {x: 1.92, y: 4.25, z: 0.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6190,7 +6190,7 @@ Transform:
   m_GameObject: {fileID: 1159679433}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.92, y: 0.82, z: 0.17}
+  m_LocalPosition: {x: 1.92, y: 0.82, z: 0.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9009,7 +9009,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 997745ab323936640a8d4d2be6592916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPositionValue: 742
+  targetPositionValue: 230
   maxTimerForAnimation: 5
   axisToChange: 0
 --- !u!1001 &1674477942
@@ -11506,7 +11506,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3972083619616209550, guid: 87e5947e8f919464ebd29315ad9154af, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4332749589883072253, guid: 87e5947e8f919464ebd29315ad9154af, type: 3}
       propertyPath: m_LocalScale.x

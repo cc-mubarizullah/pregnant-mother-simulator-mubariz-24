@@ -164,8 +164,8 @@ public class Player : MonoBehaviour
 
     private void RaycastingForInteractbles()
     {
-        if (canInteract)
-        {
+        //if (canInteract)
+        //{
             Ray ray = new Ray(cameraRootGameobject.transform.position, cameraRootGameobject.transform.forward);
             RaycastHit hitInfo;
 
@@ -205,7 +205,7 @@ public class Player : MonoBehaviour
             {
                 OnIntract?.Invoke(this, new OnIntractEventArgs { intracting = false });
             }
-        }
+        //}
     }
 
     private void Item_OnEatingHealthy(object sender, EventArgs e)

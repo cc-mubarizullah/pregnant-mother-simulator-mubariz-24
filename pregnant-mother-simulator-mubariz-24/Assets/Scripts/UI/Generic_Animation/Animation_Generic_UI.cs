@@ -43,14 +43,17 @@ public class Animation_Generic_UI : MonoBehaviour
 
     private void Update()
     {
+        timerClock += Time.deltaTime;
+        if (timerClock >= maxTimeUiStaysOnScreen)
+        {
+            canAnimate = false;
+            BackwardAnimation();
+        }
         if (canAnimate)
         {
             ForwardAnimation();
         }
-        else
-        {
-            BackwardAnimation();
-        }
+        
     }
 
     void ForwardAnimation()
@@ -61,7 +64,7 @@ public class Animation_Generic_UI : MonoBehaviour
         if (transform.position == targetPosition)
         {
             elapsedTime = 0f;
-            UIStayOnScreen();
+            canAnimate = false;
         }
     }
 
@@ -74,20 +77,23 @@ public class Animation_Generic_UI : MonoBehaviour
         if (transform.position == initialPosition)
         {
             elapsedTime = 0f;
+            timerClock = 0f;
+            canAnimate = true;
             gameObject.SetActive(false);
         }
     }
 
    
 
-    private void UIStayOnScreen()
-    {
-        timerClock += Time.deltaTime;
-        if (timerClock >= maxTimeUiStaysOnScreen)
-        {
-            canAnimate = true;
-        }
-        canAnimate = false;
-    }
+    //private void UIStayOnScreen()
+    //{
+    //    timerClock += Time.deltaTime;
+    //    if (timerClock >= maxTimeUiStaysOnScreen)
+    //    {
+    //        canAnimate = true;
+    //        timerClock =0f;
+    //    }
+    //    canAnimate = false;
+    //}
 
 }
