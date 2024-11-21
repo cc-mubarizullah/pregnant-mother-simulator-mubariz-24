@@ -174,6 +174,18 @@ public class Player : MonoBehaviour
                     interactable.PhysicalInteract();
                     gameInput.hasInteracted = true;
                 }
+                IInventoryHandler grabAble = hitInfo.collider.GetComponent<IInventoryHandler>();
+                if (grabAble != null)
+                {
+                    if (gameInput.GrabButtonPressed() && !gameInput.hasGrabbed)
+                    {
+                        // GRAB INTERACTION HERE
+                        grabAble.Grab();
+                        gameInput.hasInteracted = true;
+                    }
+                }
+                
+
             }
 
         }

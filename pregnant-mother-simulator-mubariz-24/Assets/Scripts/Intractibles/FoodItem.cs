@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 // this script should be attached with food items that will increase or decrease BABY'S HEALTH BAR.
-public class FoodItem : MonoBehaviour, IInteractWithIneractables
+public class FoodItem : MonoBehaviour, IInteractWithIneractables, IInventoryHandler
 {
     public event EventHandler OnEatingHealthy;
 
@@ -19,7 +19,7 @@ public class FoodItem : MonoBehaviour, IInteractWithIneractables
     [Tooltip("Name of the item will not be shown if this component is not setup correctly.")]
     [SerializeField] IntractiblesSO intractiblesSO;     
 
-
+    
     public void Interact()
     {
         ShowItemText();
@@ -55,5 +55,10 @@ public class FoodItem : MonoBehaviour, IInteractWithIneractables
         }
 
         Destroy(gameObject);
+    }
+
+    public void Grab()
+    {
+        Debug.Log("The object is grabbed.");
     }
 }

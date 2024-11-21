@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 8813867055948149458, guid: a8e8b2dd6821e9d40895844c76eaf4cb, type: 3}
   prefabName: Cola
+  prefabImage: {fileID: 21300000, guid: abb62e44c9aa2174d9307c5fcf4fc65c, type: 3}

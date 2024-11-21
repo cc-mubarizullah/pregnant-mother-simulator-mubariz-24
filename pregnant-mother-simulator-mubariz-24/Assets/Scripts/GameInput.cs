@@ -6,16 +6,17 @@ public class GameInput : MonoBehaviour
 {
     [HideInInspector]
     public bool hasInteracted;
+    public bool hasGrabbed;
     bool isInteractPressed;
+    bool isGrabPressed;
 
     public static GameInput Instance;
-
-    //public event EventHandler OnIntract;
     
 
     [Header("Player Inputs")]
     [SerializeField] Vector2 moveVector;
     [SerializeField] Vector2 lookVector;
+    
 
     GameInputActions gameInputActions;
 
@@ -30,6 +31,14 @@ public class GameInput : MonoBehaviour
         gameInputActions.Player.Enable();
         gameInputActions.Player.Intract.performed += Intract_performed;
         gameInputActions.Player.Intract.canceled += Intract_canceled;
+        gameInputActions.Player.Grab.performed += Grab_performed;
+        gameInputActions.Player.Grab.canceled += Grab_canceled;
+    }
+
+    private void Intract_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        isInteractPressed = true;
+        hasInteracted = false;
     }
 
     private void Intract_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -38,11 +47,17 @@ public class GameInput : MonoBehaviour
 
     }
 
-    private void Intract_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+
+    private void Grab_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        isInteractPressed = true;
-        hasInteracted = false;
+        isGrabPressed = true;
+        hasGrabbed = false;
     }
+    private void Grab_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        isGrabPressed = false;
+    }
+   
 
     private void Update()
     {
@@ -65,5 +80,10 @@ public class GameInput : MonoBehaviour
     {
         return isInteractPressed;   
     }
+
+    public bool GrabButtonPressed()
+    { 
+    return isGrabPressed;
+    }   
 
 }
