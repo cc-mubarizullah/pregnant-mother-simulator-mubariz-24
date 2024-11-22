@@ -1,0 +1,17 @@
+D:\mubariz_workspace\pregnant-mother-simulator-mubariz-24\pregnant-mother-simulator-mubariz-24\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\GAToUnityCallbacks.h
+D:\mubariz_workspace\pregnant-mother-simulator-mubariz-24\pregnant-mother-simulator-mubariz-24\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\MacroEnd.h
+D:\mubariz_workspace\pregnant-mother-simulator-mubariz-24\pregnant-mother-simulator-mubariz-24\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\MacroHeaderBegin.h
+D:\mubariz_workspace\pregnant-mother-simulator-mubariz-24\pregnant-mother-simulator-mubariz-24\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\MacroSourceBegin.h
+D:\mubariz_workspace\pregnant-mother-simulator-mubariz-24\pregnant-mother-simulator-mubariz-24\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGAApplication.h
+D:\mubariz_workspace\pregnant-mother-simulator-mubariz-24\pregnant-mother-simulator-mubariz-24\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGAConfiguration.h
+D:\mubariz_workspace\pregnant-mother-simulator-mubariz-24\pregnant-mother-simulator-mubariz-24\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGADebug.h
+D:\mubariz_workspace\pregnant-mother-simulator-mubariz-24\pregnant-mother-simulator-mubariz-24\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGAEvents.h
+D:\mubariz_workspace\pregnant-mother-simulator-mubariz-24\pregnant-mother-simulator-mubariz-24\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGAInput.h
+D:\mubariz_workspace\pregnant-mother-simulator-mubariz-24\pregnant-mother-simulator-mubariz-24\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGASoftKeyboard.h
+D:\mubariz_workspace\pregnant-mother-simulator-mubariz-24\pregnant-mother-simulator-mubariz-24\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGASoftKeyboardCallbacks.h
+D:\mubariz_workspace\pregnant-mother-simulator-mubariz-24\pregnant-mother-simulator-mubariz-24\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGATypes.h
+D:\mubariz_workspace\pregnant-mother-simulator-mubariz-24\pregnant-mother-simulator-mubariz-24\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UGAVersion.h
+D:\mubariz_workspace\pregnant-mother-simulator-mubariz-24\pregnant-mother-simulator-mubariz-24\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UnityToGACallbacks.h
+D:\mubariz_workspace\pregnant-mother-simulator-mubariz-24\pregnant-mother-simulator-mubariz-24\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UnityToGAConfigurationCallbacks.h
+D:\mubariz_workspace\pregnant-mother-simulator-mubariz-24\pregnant-mother-simulator-mubariz-24\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UnityToGAKeyEventCallbacks.h
+D:\mubariz_workspace\pregnant-mother-simulator-mubariz-24\pregnant-mother-simulator-mubariz-24\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\UnityToGAMotionEventCallbacks.h

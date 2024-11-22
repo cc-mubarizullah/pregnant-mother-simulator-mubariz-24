@@ -40,15 +40,9 @@ public class Player : MonoBehaviour
     [Tooltip("The layer of gameobjects with which player can interact.")]
     [SerializeField] LayerMask interactLayer;
 
-    [Space(20)]
-    [Header("Pregnant Game Special")]
-    [Tooltip("How much time should be passed when player dont eat something and baby's health decrease.")]
-    [SerializeField] float mealEatenTimerMax = 5f;
 
-   
     [Space(30)]
     [SerializeField] bool lookWithMouse;
-
 
     float cameraTopClamp = 90f;
     float cameraButtomClamp = -90f;
@@ -57,30 +51,7 @@ public class Player : MonoBehaviour
     private float rotationVelocity;
     float mealEatenTimer;
     bool canInteract = true;
-    
-
-
-    FoodItem[] foodItems;   // this varible will store ref of all the gameobjects which has FoodItem script as a component.
-    Medicine[] medicines;   // this varible will store ref of all the gameobjects which has Medicine script as a component.
-
-    private void Start()
-    {
-        foodItems = FindObjectsByType<FoodItem>(FindObjectsInactive.Include,FindObjectsSortMode.None);
-       
-        foreach (FoodItem item in foodItems)
-        {
-            item.OnEatingHealthy += Item_OnEatingHealthy;
-        }
-
-        medicines = FindObjectsByType<Medicine>(FindObjectsInactive.Include, FindObjectsSortMode.None);
-
-        foreach(Medicine medicine in medicines)
-        {
-            medicine.OnEatingRightMedicine += Item_OnEatingHealthy;
-        }
-        
-    }
-
+   
     private void Awake()
     {
         if (Instance != null)
@@ -93,7 +64,6 @@ public class Player : MonoBehaviour
     {
         Movement();
         RaycastingForInteractbles();
-        BabyHealthDecreaseNotEating();
     }
 
     private void LateUpdate()
@@ -164,12 +134,11 @@ public class Player : MonoBehaviour
 
     private void RaycastingForInteractbles()
     {
-        //if (canInteract)
-        //{
+        if (canInteract)
+        {
             Ray ray = new Ray(cameraRootGameobject.transform.position, cameraRootGameobject.transform.forward);
-            RaycastHit hitInfo;
 
-            bool hasHitInterectables = Physics.Raycast(ray, out hitInfo, distanceOfRaycast, interactLayer);
+            bool hasHitInterectables = Physics.Raycast(ray, out RaycastHit hitInfo, distanceOfRaycast, interactLayer);
 
             if (hasHitInterectables)
             {
@@ -197,7 +166,6 @@ public class Player : MonoBehaviour
                         }
                     }
 
-
                 }
 
             }
@@ -205,23 +173,6 @@ public class Player : MonoBehaviour
             {
                 OnIntract?.Invoke(this, new OnIntractEventArgs { intracting = false });
             }
-        //}
-    }
-
-    private void Item_OnEatingHealthy(object sender, EventArgs e)
-    {
-        mealEatenTimer = mealEatenTimerMax;
-    }
-
-    private void BabyHealthDecreaseNotEating()
-    {
-        mealEatenTimer -= Time.deltaTime;
-        if (mealEatenTimer <= 0)
-        {
-            BabyHealthBarUI.Instance.UpdateBabyHealthUI(PrefrencesManager.Instance.healthDecNotEating);
-            mealEatenTimer = mealEatenTimerMax;
         }
     }
-
-
 }

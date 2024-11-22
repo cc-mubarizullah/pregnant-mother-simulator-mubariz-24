@@ -1,0 +1,2 @@
+D:\mubariz_workspace\pregnant-mother-simulator-mubariz-24\pregnant-mother-simulator-mubariz-24\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+D:\mubariz_workspace\pregnant-mother-simulator-mubariz-24\pregnant-mother-simulator-mubariz-24\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt

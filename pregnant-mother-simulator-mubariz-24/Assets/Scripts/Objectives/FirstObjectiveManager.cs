@@ -4,11 +4,12 @@ using UnityEngine.Events;
 
 public class FirstObjectiveManager : MonoBehaviour
 {
-    bool hasEatenUnhealthy = false;
+    bool hasEatenHealthty;
 
     [SerializeField] ObjectivesSO firstObjectiveSO;
     [SerializeField] ObjectiveShowUI objectiveShowUI;
     [SerializeField] HintUI hintUI;
+
     [SerializeField] string textOnEatingUnhealthyFood;
     FoodItem[] foodItem;
     public int healthyFruitsEaten;
@@ -46,17 +47,19 @@ public class FirstObjectiveManager : MonoBehaviour
 
     private void Item_OnEatingUnhealthy(object sender, System.EventArgs e)
     {
-        hintUI.gameObject.SetActive(true);
-        hintUI.ShowHintText(textOnEatingUnhealthyFood);
-        hasEatenUnhealthy = true;
+        if (!hasEatenHealthty)
+        {
+            hintUI.gameObject.SetActive(true);
+            hintUI.ShowHintText(textOnEatingUnhealthyFood);
+            hasEatenHealthty = true;
+        }
     }
 
     private void CheckProgress()
     {
         if(healthyFruitsEaten == totalHealthyFruitsToEat)
         {
-            Debug.Log("first objective is complete");
-            objectiveShowUI.ShowObjectiveText(firstObjectiveSO.objectivesText);
+            firstObjectiveSO.isObjectiveComplete = true;
             Destroy(gameObject);
         }
     }

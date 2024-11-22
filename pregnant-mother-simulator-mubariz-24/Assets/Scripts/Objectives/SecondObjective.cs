@@ -61,7 +61,6 @@ public class SecondObjective : MonoBehaviour
 
     private void OnEnable()
     {
-        
         eventToSubscribeOnEnable?.Invoke();
     }
     private void OnDisable()

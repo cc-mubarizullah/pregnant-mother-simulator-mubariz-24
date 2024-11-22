@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a62f760122173f74f8abe3032487c049, type: 3}
   m_Name: Objective 3
   m_EditorClassIdentifier: 
-  objectivesText: Drink water to reach your daily target intake of 8 glasses.
+  objectivesText: Drink 2 glass of water to reach your daily target of water intake.
+  objectiveId: 0
+  isObjectiveComplete: 0

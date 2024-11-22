@@ -8,6 +8,10 @@ public class DrawerFunctionality : IIntractShowVisuals, IInteractWithIneractable
     [Tooltip("The DIFFERENCE between present local position and targer local position.")]
     [SerializeField] float openCloseDiff = 0.41f;
 
+    [SerializeField] AudioClip drawerOpenEffect;
+    [SerializeField] AudioClip drawerCloseEffect;
+    bool hasDrawerOpen = false;             // when drawer animation runs at first frame it will be true after words after that we will make it value false so it does not play at second frame
+
     enum AxisToAnimate
     {
         XAxis,
@@ -51,6 +55,11 @@ public class DrawerFunctionality : IIntractShowVisuals, IInteractWithIneractable
         ShowItemText();
     }
 
+    public override void ShowItemText()
+    {
+        InteractiveItemTextUI.Instance.SetItemText(OpenCloseText());
+    }
+
     public void PhysicalInteract()
     {
         elapsedTime = 0f;
@@ -63,11 +72,19 @@ public class DrawerFunctionality : IIntractShowVisuals, IInteractWithIneractable
         {
             isDrawerOpen = true;
         }
+
+        if (!hasDrawerOpen)
+        {
+            VfxManagers.Instance.PlaySoundEffect(drawerOpenEffect, gameObject.transform.position);
+            hasDrawerOpen = true;
+        }
+        else
+        {
+            VfxManagers.Instance.PlaySoundEffect(drawerCloseEffect, gameObject.transform.position);
+            hasDrawerOpen= false;
+        }
     }
-    public override void ShowItemText()
-    {
-        InteractiveItemTextUI.Instance.SetItemText(OpenCloseText());
-    }
+    
 
     string OpenCloseText()
     {
@@ -83,9 +100,12 @@ public class DrawerFunctionality : IIntractShowVisuals, IInteractWithIneractable
 
     void DrawerOpenAnimation()
     {
+       
+        
+        
         elapsedTime += Time.deltaTime;
-        float t = Mathf.Clamp01(elapsedTime / timeForDrawerMovement);
-        transform.localPosition = Vector3.Lerp(transform.localPosition, openTargetPosition, t);
+        float t = elapsedTime / timeForDrawerMovement;
+        transform.localPosition = Vector3.Lerp(closeTargetPosition, openTargetPosition, t );
 
         if (t >= 1f)
         {
@@ -95,9 +115,11 @@ public class DrawerFunctionality : IIntractShowVisuals, IInteractWithIneractable
     }
     void DrawerCloseAnimation()
     {
+
+        
         elapsedTime += Time.deltaTime;
-        float t = Mathf.Clamp01( elapsedTime / timeForDrawerMovement);
-        transform.localPosition = Vector3.Lerp(transform.localPosition, closeTargetPosition, t);
+        float t =  elapsedTime / timeForDrawerMovement;
+        transform.localPosition = Vector3.Lerp(openTargetPosition, closeTargetPosition, t  );
 
         if (t >= 1f)
         {

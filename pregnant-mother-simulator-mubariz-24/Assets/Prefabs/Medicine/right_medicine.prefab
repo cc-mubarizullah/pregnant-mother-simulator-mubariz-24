@@ -145,4 +145,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intractiblesSO: {fileID: 11400000, guid: 125fd836135216940bc8434d941268ab, type: 2}
-  medicineType: 1
+  medicineType: 0

@@ -1,0 +1,10 @@
+# ninja log v5
+73	8913	7539569153775779	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	e88160f3cba052f3
+34	9061	7539569154375228	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	332f3fbdb4c28d69
+44	9169	7539569153955297	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	a5760d6c7c561e
+84	9410	7539569158300228	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	e28e62ffae4a3832
+1	9753	7539569162157364	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	f12966c6d219981a
+169	9864	7539569162903175	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	a8744a1133e4a47
+54	11168	7539569177010410	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	ed8a5f3c6256c5db
+15	11307	7539569178765683	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	c8aa70c2d0bfb8c1
+11308	11683	7539569182641123	D:/mubariz_workspace/pregnant-mother-simulator-mubariz-24/pregnant-mother-simulator-mubariz-24/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/3l18t521/obj/arm64-v8a/libgame.so	9ae817ae32b6e35c
