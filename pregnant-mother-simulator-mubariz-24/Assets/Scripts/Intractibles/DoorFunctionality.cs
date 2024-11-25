@@ -42,7 +42,6 @@ public class DoorFunctionality : IIntractShowVisuals, IInteractWithIneractables
 
     public void PhysicalInteract()
     {
-        Debug.Log("this message is from door");
         if (!isDoorOpen)
         {
         isDoorOpen = true;
@@ -54,6 +53,15 @@ public class DoorFunctionality : IIntractShowVisuals, IInteractWithIneractables
         animator.SetBool(OPEN_DOOR, false);
         }
     }
-        
+
+    public void OpenDoorSound()
+    {
+        SFXmanager.Instance.PlaySoundEffectOnPosition(SFXmanager.Instance.doorOpenSFX, transform.position);
+    }
+
+    public void CloseDoorSound()
+    {
+        SFXmanager.Instance.PlaySoundEffectOnPosition(SFXmanager.Instance.doorCloseSFX, transform.position);
+    }
 }
 

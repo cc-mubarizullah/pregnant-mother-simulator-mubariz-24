@@ -8,8 +8,7 @@ public class DrawerFunctionality : IIntractShowVisuals, IInteractWithIneractable
     [Tooltip("The DIFFERENCE between present local position and targer local position.")]
     [SerializeField] float openCloseDiff = 0.41f;
 
-    [SerializeField] AudioClip drawerOpenEffect;
-    [SerializeField] AudioClip drawerCloseEffect;
+   
     bool hasDrawerOpen = false;             // when drawer animation runs at first frame it will be true after words after that we will make it value false so it does not play at second frame
 
     enum AxisToAnimate
@@ -25,7 +24,7 @@ public class DrawerFunctionality : IIntractShowVisuals, IInteractWithIneractable
     Vector3 closeTargetPosition;
     bool isDrawerOpen = true;
     float elapsedTime = 0f;
-    float timeForDrawerMovement = 1f;
+    float timeForDrawerMovement = 0.5f;
     bool isInteracting = false;
 
     private void Start()
@@ -75,12 +74,12 @@ public class DrawerFunctionality : IIntractShowVisuals, IInteractWithIneractable
 
         if (!hasDrawerOpen)
         {
-            VfxManagers.Instance.PlaySoundEffect(drawerOpenEffect, gameObject.transform.position);
+            SFXmanager.Instance.PlaySoundEffectOnPosition(SFXmanager.Instance.drawerOpenSFX, gameObject.transform.position);
             hasDrawerOpen = true;
         }
         else
         {
-            VfxManagers.Instance.PlaySoundEffect(drawerCloseEffect, gameObject.transform.position);
+            SFXmanager.Instance.PlaySoundEffectOnPosition(SFXmanager.Instance.drawerCloseSFX, gameObject.transform.position);
             hasDrawerOpen= false;
         }
     }

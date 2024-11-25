@@ -1,21 +1,47 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-public class WaterBottle : MonoBehaviour
+public class WaterBottle : MonoBehaviour, IInteractWithIneractables
 {
+    [SerializeField] GameObject waterInsideGlass;
+    [SerializeField] IntractiblesSO waterSO;
     const string IS_POUR = "isPour";
+    Animator animator;
     bool canPour;
-
+    float clock;
+    public event EventHandler OnPourWater;
     private void Start()
     {
-        canPour = true; ;
-        Animator animator = GetComponent<Animator>();
-        animator.SetBool(IS_POUR, canPour);
+        animator = GetComponent<Animator>();   
     }
 
     public void ReversingBool()
     {
-        if(canPour)
-            canPour=false;
+        animator.SetBool(IS_POUR, false);
+    }
+
+    public void PlayPouringSFX()
+    {
+        SFXmanager.Instance.PlaySoundEffectOnPosition(SFXmanager.Instance.waterPouringSFX, Camera.main.transform.position);
+    }
+
+    public void Interact()
+    {
+        InteractiveItemTextUI.Instance.SetItemText("Pour Water!");
+    }
+
+    public void PhysicalInteract()
+    {
+        animator.SetBool(IS_POUR, true);
+    }
+
+    public void FirePourEvent()
+    {
+        OnPourWater?.Invoke(this, EventArgs.Empty);
+    }
+    public void FillGlass()
+    {
+        waterInsideGlass.SetActive(true);
     }
 }
