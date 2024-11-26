@@ -8,12 +8,7 @@ public class LoadingScreenManager : MonoBehaviour
     [SerializeField] GameObject loadingScreen;
     [SerializeField] Image imageToFill;
 
-    public void LoadScene(string sceneName)
-    {
-        SceneManager.LoadScene(sceneName);
-    }
-
-    private IEnumerator LoadSceneASync(string sceneName)
+    public IEnumerator LoadSceneASync(string sceneName)
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
         loadingScreen.SetActive(true);
