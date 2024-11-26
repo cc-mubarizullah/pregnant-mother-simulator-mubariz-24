@@ -10,6 +10,14 @@ public class MusicManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         audioSource.Play();
     }
+    public void PlaySound()
+    {
+        audioSource.Play();
+    }
+    public void PauseSound()
+    {
+        audioSource.Stop();
+    }
 
-   
+
 }

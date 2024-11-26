@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Objective 2
   m_EditorClassIdentifier: 
   objectivesText: Find and eat  your daily medicine that doctor has prescribed you.
-  objectiveId: 1
-  isObjectiveComplete: 0
+  objectiveId: 2
+  isObjectiveComplete: 1

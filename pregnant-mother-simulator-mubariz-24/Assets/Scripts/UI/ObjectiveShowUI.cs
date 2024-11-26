@@ -4,19 +4,20 @@ public class ObjectiveShowUI : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI objectiveTextUI;
     [Tooltip("This transform will hold the child of gameobject which holds the whole objective UI. In this the gameobject named emptyParent.")]
-    [SerializeField] Transform child;
+
     [SerializeField] Animator m_Animator;
-    [SerializeField] FirstObjectiveManager firstObjectiveManager;
 
     private void Start()
     {
         m_Animator = GetComponent<Animator>();
-        FirstObjectiveManager.OnL01Obj01Complete += ObjectiveCompleteAnimation;
-        FirstObjectiveManager.OnL01Obj01Update += ObjectiveUpdateAnimation;
-        SecondObjective.OnL01Obj02Complete += ObjectiveCompleteAnimation;
-        SecondObjective.OnL01Obj02Update += ObjectiveUpdateAnimation;
-        ThirdObjective.OnL01Obj03Complete += ObjectiveCompleteAnimation;
-        ThirdObjective.OnL01Obj03Update += ObjectiveUpdateAnimation;
+        Objective01.OnL01Obj01Complete += ObjectiveCompleteAnimation;
+        Objective01.OnL01Obj01Update += ObjectiveUpdateAnimation;
+        Objective02.OnL01Obj02Complete += ObjectiveCompleteAnimation;
+        Objective02.OnL01Obj02Update += ObjectiveUpdateAnimation;
+        Objective03.OnL01Obj03Complete += ObjectiveCompleteAnimation;
+        Objective03.OnL01Obj03Update += ObjectiveUpdateAnimation;
+        Objective04.OnL02Obj01Update += ObjectiveUpdateAnimation;
+        Objective04.OnL02Obj01Complete += ObjectiveCompleteAnimation;
 
     }
 

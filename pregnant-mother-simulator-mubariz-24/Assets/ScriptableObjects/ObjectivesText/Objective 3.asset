@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Objective 3
   m_EditorClassIdentifier: 
   objectivesText: Drink 2 glass of water to reach your daily target of water intake.
-  objectiveId: 0
-  isObjectiveComplete: 0
+  objectiveId: 3
+  isObjectiveComplete: 1

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Objective 1
   m_EditorClassIdentifier: 
   objectivesText: Go and find something healthy to eat.
-  objectiveId: 0
-  isObjectiveComplete: 0
+  objectiveId: 1
+  isObjectiveComplete: 1
