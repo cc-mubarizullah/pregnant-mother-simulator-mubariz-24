@@ -15,51 +15,80 @@ public class Objective02 : MonoBehaviour
     public UnityEvent eventsToCallWhenEnable;
     public UnityEvent eventsToCallWhenDisable;
 
-    public static event EventHandler OnL01Obj02Update;
-    public static event EventHandler OnL01Obj02Complete;
+    public static event EventHandler OnObj02Update;
+    public static event EventHandler OnObj02Complete;
 
     bool hasEatenWrongMedicine = false;
 
     Medicine[] medicines;
+    Medicine[] medicineLeft;
+    bool hasEatenAllMedicine;
     float clock;
+    float clock2;
+
+    private void OnEnable()
+    {
+        eventsToCallWhenEnable?.Invoke();
+    }
+
     private void Start()
     {
         medicines = FindObjectsByType<Medicine>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         foreach (Medicine item in medicines)
         {
+            item.gameObject.layer = 7;
             item.OnEatingRightMedicine += Item_OnEatingRightMedicine;
             item.OnEatingWrongMedicine += Item_OnEatingWrongMedicine;
         }
     }
 
-    
 
     private void Update()
     {
+        CheckingAllMedicine();
         DelayAfterActivation();
         CheckProgress();
         objectiveShowUI.ShowObjectiveText(secondObjectiveSO.objectivesText);
     }
 
-    //Logic for objective complete
-    void CheckProgress()
+    void CheckingAllMedicine()
     {
-        if (medicineEaten == totalMedicineEaten)
-        {
-            //OBJECTIVE COMPLETE
-            secondObjectiveSO.isObjectiveComplete = true;
-            OnL01Obj02Complete?.Invoke(this, EventArgs.Empty);
-            Destroy(gameObject, 1f);
-        }
+        medicineLeft = FindObjectsByType<Medicine>(FindObjectsInactive.Include, FindObjectsSortMode.None);
     }
 
     void DelayAfterActivation()
     {
         clock += Time.deltaTime;
-        if (clock > 4f && clock < 4.5f)
+        if (clock > 2f && clock <2.1f)
         {
-            OnL01Obj02Update?.Invoke(this, EventArgs.Empty);
+            OnObj02Update?.Invoke(this, EventArgs.Empty);
         }
+    }
+
+    //Logic for objective complete
+    void CheckProgress()
+    {
+        if (hasEatenAllMedicine)
+        {
+            if (DelayAfterObjectiveComplete())
+            {
+                //OBJECTIVE COMPLETE
+                secondObjectiveSO.isObjectiveComplete = true;
+                OnObj02Complete?.Invoke(this, EventArgs.Empty);
+                Destroy(gameObject, 1f);
+            }
+        }
+    }
+
+
+    bool DelayAfterObjectiveComplete()
+    {
+        clock2 += Time.deltaTime;
+        if (clock2 >= 2f)
+        {
+            return true;
+        }
+        return false;
     }
 
     private void Item_OnEatingWrongMedicine(object sender, System.EventArgs e)   //function to trigger warning for the first time to not eat unhealthy items
@@ -67,6 +96,7 @@ public class Objective02 : MonoBehaviour
         if (!hasEatenWrongMedicine)
         {
             hintUI.gameObject.SetActive(true);
+            SFXmanager.Instance.PlaySoundEffectOnPosition(SFXmanager.Instance.errorSFX, Player.Instance.transform.position);
             hintUI.ShowHintText(eatingWrongMedicineWarning);
             hasEatenWrongMedicine = true;
         }
@@ -78,15 +108,24 @@ public class Objective02 : MonoBehaviour
         {
             medicineEaten++;
         }
+        if (medicineEaten == totalMedicineEaten)
+        {
+            hasEatenAllMedicine = true;
+        }
     }
 
-    private void OnEnable()
-    {
-        eventsToCallWhenEnable?.Invoke();
-    }
+
     private void OnDisable()
     {
         eventsToCallWhenDisable?.Invoke();
+        foreach (Medicine item in medicineLeft)
+        {
+            if (item != null)
+            {
+                item.gameObject.layer = 0;
+            }
+        }
     }
     
+
 }

@@ -12,14 +12,14 @@ public class Telephone : MonoBehaviour, IInteractWithIneractables
     float timer;
     float audioClipLenght = 38f;
     AudioSource m_AudioSource;
-    MusicManager musicManaer;
-    bool startTimer = false;
+    MusicManager musicManager;
+    bool hasStartConversation = false;
+    bool soundWasPlaying;
     private void Start()
     {
         m_Animator = GetComponent<Animator>();
         m_AudioSource = GetComponent<AudioSource>();
-        Debug.Log(m_AudioSource.clip.name);
-        musicManaer = FindAnyObjectByType<MusicManager>();
+        musicManager = FindAnyObjectByType<MusicManager>();
     }
     public void Interact()
     {
@@ -45,9 +45,9 @@ public class Telephone : MonoBehaviour, IInteractWithIneractables
         if (!canInteract)
             gameObject.layer = 0;    //set layer to default
 
-        if(startTimer)
+        if(hasStartConversation)
         {
-            StartTalking();
+            PlayerDoctorConversation();
         }
     }
 
@@ -55,12 +55,17 @@ public class Telephone : MonoBehaviour, IInteractWithIneractables
     {
         m_Animator.SetBool(IS_PICKUP, false);
         m_Animator.SetBool(IS_TALKING, true);
-        startTimer = true;
-        musicManaer.PauseSound();
+        hasStartConversation = true;
         m_AudioSource.Play();
+        if (musicManager.GetComponent<AudioSource>().isPlaying)
+        {
+            musicManager.PauseSound();
+            soundWasPlaying = true;
+        }
+
     }
 
-    private void StartTalking()
+    private void PlayerDoctorConversation()
     {
         timer += Time.deltaTime;
         if (timer >= audioClipLenght)
@@ -68,8 +73,11 @@ public class Telephone : MonoBehaviour, IInteractWithIneractables
             //PLAYER ENDS TALKING
             m_Animator.SetBool(IS_TALKING, false);
             OnCallEnds?.Invoke(this, EventArgs.Empty);
-            musicManaer.PlaySound();
-            startTimer = false;
+            hasStartConversation = false;
+            if (soundWasPlaying)
+            {
+                musicManager.PlaySound();
+            }
         }
     }
 }

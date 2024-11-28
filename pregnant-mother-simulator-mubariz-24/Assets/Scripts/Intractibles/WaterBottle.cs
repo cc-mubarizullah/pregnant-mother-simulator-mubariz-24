@@ -8,20 +8,18 @@ public class WaterBottle : MonoBehaviour, IInteractWithIneractables
     [SerializeField] IntractiblesSO waterSO;
     const string IS_POUR = "isPour";
     Animator animator;
-    bool canPour;
-    float clock;
     public event EventHandler OnPourWater;
     private void Start()
     {
         animator = GetComponent<Animator>();   
     }
 
-    public void ReversingBool()
+    public void ReversingBool()      //this function is used in animation
     {
         animator.SetBool(IS_POUR, false);
     }
 
-    public void PlayPouringSFX()
+    public void PlayPouringSFX()     //  this function is used in animation 
     {
         SFXmanager.Instance.PlaySoundEffectOnPosition(SFXmanager.Instance.waterPouringSFX, Camera.main.transform.position);
     }
@@ -36,11 +34,11 @@ public class WaterBottle : MonoBehaviour, IInteractWithIneractables
         animator.SetBool(IS_POUR, true);
     }
 
-    public void FirePourEvent()
+    public void FirePourEvent()          //function used in animation
     {
         OnPourWater?.Invoke(this, EventArgs.Empty);
     }
-    public void FillGlass()
+    public void FillGlass()              // function used in animation
     {
         waterInsideGlass.SetActive(true);
     }

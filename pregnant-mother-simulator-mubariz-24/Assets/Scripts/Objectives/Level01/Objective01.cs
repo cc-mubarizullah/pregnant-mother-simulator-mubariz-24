@@ -20,25 +20,33 @@ public class Objective01 : MonoBehaviour
     public UnityEvent eventsToCallWhenEnable;
     public UnityEvent eventsToCallWhenDisable;
 
-    public static event EventHandler OnL01Obj01Update;
-    public static event EventHandler OnL01Obj01Complete; // declaring an event for objective 1 complete
+    public static event EventHandler OnObj01Update;
+    public static event EventHandler OnObj01Complete; // declaring an event for objective 1 complete
 
     float clock;
+    float clock2;
+    bool hasEatenAllFood;
+
+    private void OnEnable()
+    {
+        eventsToCallWhenEnable?.Invoke();
+    }
     private void Start()
     {
         
         foodItemAtStart = FindObjectsByType<FoodItem>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         foreach(FoodItem item in foodItemAtStart)
         {
+            item.gameObject.layer = 7;
             item.OnEatingHealthy += Item_OnEatingHealthy;
             item.OnEatingUnhealthy += Item_OnEatingUnhealthy;
         }
 
         objectiveShowUI.gameObject.SetActive(true);
- 
+
     }
 
-    
+
 
     private void Update()
     {
@@ -47,12 +55,55 @@ public class Objective01 : MonoBehaviour
         objectiveShowUI.ShowObjectiveText(firstObjectiveSO.objectivesText);
         CheckProgress();
     }
+    void CheckingAllFoodItems()
+    {
+        foodItemLeft = FindObjectsByType<FoodItem>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+    }
+    private void CheckProgress()
+    {
+        if (hasEatenAllFood)
+        {
+            if (DelayAfterObjComplete())
+            {
+                //OBJECTIVE COMPLETE
+                firstObjectiveSO.isObjectiveComplete = true;
+                // raising event when obj 1 complete
+                OnObj01Complete?.Invoke(this, EventArgs.Empty);
+                Destroy(gameObject, 0.1f);
+
+            }
+        }
+    }
+
+    bool DelayAfterObjComplete()
+    {
+        clock2 += Time.deltaTime;
+        if (clock2 >= 2f)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    void DelayAfterActivation()     // this function will fire event that objective ui will listen and show objective animation
+    {
+        clock += Time.deltaTime;
+        if (clock > 2f && clock < 2.1f)
+        {
+            OnObj01Update?.Invoke(this, EventArgs.Empty);
+        }
+    }
 
     private void Item_OnEatingHealthy(object sender, System.EventArgs e)
     {
-        if(healthyFruitsEaten < 4)
+        if (healthyFruitsEaten < 4)
         {
             healthyFruitsEaten++;
+        }
+        if (healthyFruitsEaten == totalHealthyFruitsToEat)
+        {
+
+            hasEatenAllFood = true;
         }
     }
 
@@ -61,28 +112,11 @@ public class Objective01 : MonoBehaviour
         if (!hasEatenHealthty)
         {
             hintUI.gameObject.SetActive(true);
+            SFXmanager.Instance.PlaySoundEffectOnPosition(SFXmanager.Instance.errorSFX, Player.Instance.transform.position);
             hintUI.ShowHintText(textOnEatingUnhealthyFood);
             hasEatenHealthty = true;
         }
-    }
-
-    // Logic for ObjectiveComplete
-    private void CheckProgress()
-    {
-        if(healthyFruitsEaten == totalHealthyFruitsToEat)
-        {
-            //OBJECTIVE COMPLETE
-            firstObjectiveSO.isObjectiveComplete = true;
-            // raising event when obj 1 complete
-            OnL01Obj01Complete?.Invoke(this, EventArgs.Empty);
-            Destroy(gameObject, 1f);
-        }
-    }
-
-    private void OnEnable()
-    {
-        eventsToCallWhenEnable?.Invoke();
-    }
+    }    
     private void OnDisable()
     {
         eventsToCallWhenDisable?.Invoke();
@@ -93,20 +127,6 @@ public class Objective01 : MonoBehaviour
                 item.gameObject.layer = 0;
             }
         }
-        
-    }
-    void DelayAfterActivation()     // this function will fire event that objective ui will listen and show objective animation
-    {
-        clock += Time.deltaTime;
-        if (clock > 4f && clock < 4.5f)
-        {
-            OnL01Obj01Update?.Invoke(this, EventArgs.Empty);
-        }
-    }
-
-    void CheckingAllFoodItems()
-    {
-        foodItemLeft = FindObjectsByType<FoodItem>(FindObjectsInactive.Include, FindObjectsSortMode.None);
     }
 
 }

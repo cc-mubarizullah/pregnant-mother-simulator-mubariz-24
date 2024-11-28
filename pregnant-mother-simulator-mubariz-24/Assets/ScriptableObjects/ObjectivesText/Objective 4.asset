@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Objective 4
   m_EditorClassIdentifier: 
   objectivesText: Call the doctor now to make an appointment for tomorrow's checkup.
-    Regular visits ensure everything is on track for a healthy pregnancy journey.
+    Regular visits ensure everything is on track.
   objectiveId: 4
-  isObjectiveComplete: 0
+  isObjectiveComplete: 1

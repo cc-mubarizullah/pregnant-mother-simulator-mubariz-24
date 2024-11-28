@@ -16,16 +16,23 @@ public class Player : MonoBehaviour
     {
         public bool intracting;
     }
-    
+
 
     [Header("Essentials")]
+
     [Tooltip("The GameInput script that should be attached with some gameobject as this script should be reading input for look and movment from it.")]
     [SerializeField] GameInput gameInput;
+
     [SerializeField] CharacterController characterController;
+
     [Tooltip("This game object should have a collider with apprx 0.3 unit radius")]
     [SerializeField] GameObject groundCheck;
+
     [Tooltip("The gameobject which controlls the cinemachine position and raycasitg for interaction.")]
     [SerializeField] GameObject cameraRootGameobject;
+
+    [Tooltip("The position where object will move for grab or interaction animation")]
+    [SerializeField] Transform grabPoint;
 
     [Tooltip("The layer on which player can jump.")]
     [SerializeField] LayerMask groundLayer;
@@ -33,10 +40,14 @@ public class Player : MonoBehaviour
     [Space(20)]
     [Header("Prefrences")]
     [SerializeField] float playerSpeed = 5f;
+
     [SerializeField] float cameraRotationSpeed = 1f;
+
     [SerializeField] float gravity = -1f;
+    
     [Tooltip("How far a player can interact with Objects.")]
     [SerializeField] float distanceOfRaycast = 1.6f;
+    
     [Tooltip("The layer of gameobjects with which player can interact.")]
     [SerializeField] LayerMask interactLayer;
 
@@ -51,13 +62,13 @@ public class Player : MonoBehaviour
     private float rotationVelocity;
     float mealEatenTimer;
     bool canInteract = true;
-   
+
     private void Awake()
     {
         if (Instance != null)
-        Debug.LogError("there are more than one instance of player");
+            Debug.LogError("there are more than one instance of player");
         Instance = this;
-        
+
     }
 
     private void Update()
@@ -174,5 +185,10 @@ public class Player : MonoBehaviour
                 OnIntract?.Invoke(this, new OnIntractEventArgs { intracting = false });
             }
         }
+    }
+
+    public Vector3 GetGrabPosition()
+    {
+        return grabPoint.position;
     }
 }
