@@ -7,7 +7,7 @@ public class HintUIAnimation : MonoBehaviour
     const string ANIMATE = "Animate";
     private void Start()
     {
-         animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
     bool canAnimate;
     private void OnEnable()
@@ -25,5 +25,10 @@ public class HintUIAnimation : MonoBehaviour
     {
         canAnimate = false;
         gameObject.SetActive(false);
+    }
+
+    public void PlayHintSound()
+    {
+        SFXmanager.Instance.PlaySoundEffectOnPosition(SFXmanager.Instance.hintSFX, Player.Instance.transform.position);
     }
 }

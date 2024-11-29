@@ -11,6 +11,7 @@ public class SFXmanager : MonoBehaviour
     public AudioClip waterPouringSFX;
     public AudioClip errorSFX;
     public AudioClip waterDrinkSFX;
+    public AudioClip hintSFX;
 
 
     public static SFXmanager Instance { get; private set; }

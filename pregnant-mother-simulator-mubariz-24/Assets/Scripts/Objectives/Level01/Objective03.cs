@@ -63,6 +63,9 @@ public class Objective03 : MonoBehaviour
                 //Time.timeScale = 0f;
                 //levelCompletePanel.SetActive(true);
                 Destroy(gameObject, 0.1f);
+
+                //SEND MESSAGE HERE TO LEVEL01 TO SAVE THINGS TILL THIS
+                PlayerPrefs.SetInt("Level02Unlock", 1);
             }
         }
     }
