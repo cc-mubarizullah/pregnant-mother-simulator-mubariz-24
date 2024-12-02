@@ -13,8 +13,8 @@ public class Objective13 : MonoBehaviour
     public UnityEvent eventToHappenOnEnable;
     public UnityEvent eventToHappenOnDisEnable;
 
-    public static event EventHandler OnObj12Update;
-    public static event EventHandler OnObj12Complete;
+    public static event EventHandler OnObj13Update;
+    public static event EventHandler OnObj13Complete;
 
     float clock;
     float clock2;
@@ -56,7 +56,7 @@ public class Objective13 : MonoBehaviour
         clock += Time.deltaTime;
         if (clock > 0.4f && clock < 0.5f)
         {
-            OnObj12Update?.Invoke(this, EventArgs.Empty);
+            OnObj13Update?.Invoke(this, EventArgs.Empty);
         }
     }
 
@@ -64,7 +64,7 @@ public class Objective13 : MonoBehaviour
     {
             if (DelayObjAfterComplete())
             {
-                OnObj12Complete?.Invoke(this, EventArgs.Empty);
+                OnObj13Complete?.Invoke(this, EventArgs.Empty);
             }
     }
 
