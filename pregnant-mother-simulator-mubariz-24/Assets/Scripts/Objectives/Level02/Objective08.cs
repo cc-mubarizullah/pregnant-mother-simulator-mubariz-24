@@ -69,7 +69,7 @@ public class Objective08 : MonoBehaviour
             {
                 //LEVEL 2 COMPLETES HERE
                 OnObj08Complete?.Invoke(this, EventArgs.Empty);
-                Debug.Log("Level 2 completes here");
+                PlayerPrefs.SetInt("Level03Unlock", 10);
                 
             }
         }

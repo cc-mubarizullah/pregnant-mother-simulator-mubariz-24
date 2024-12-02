@@ -6,6 +6,8 @@ public class Objective12 : MonoBehaviour
 {
     [SerializeField] ObjectiveShowUI objectiveShowUI;
     [SerializeField] ObjectivesSO twelthObjective;
+    [SerializeField] Objective12_TriggerUltrasound objective12_TriggerUltrasound;
+    [SerializeField] GameObject ultrasoundCutscene;
 
     public UnityEvent eventToHappenOnEnable;
     public UnityEvent eventToHappenOnDisEnable;
@@ -15,25 +17,27 @@ public class Objective12 : MonoBehaviour
 
     float clock;
     float clock2;
-    bool hasInteractedWithDoctor;
+    bool hasInteractedWithUltraSoundMachine;
 
     private void OnEnable()
     {
         eventToHappenOnEnable.Invoke();
-
     }
 
     private void Start()
     {
-
+        objective12_TriggerUltrasound.OnPlayerTriggerUltraSoundMachine += Objective12_TriggerUltrasound_OnPlayerTriggerUltraSoundMachine;
     }
 
-
+    private void Objective12_TriggerUltrasound_OnPlayerTriggerUltraSoundMachine()
+    {
+        hasInteractedWithUltraSoundMachine = true;
+    }
 
     private void Update()
     {
         DelayObjUIAfterActivation();
-        //CheckProgress();
+        CheckProgress();
         objectiveShowUI.ShowObjectiveText(twelthObjective.objectivesText);
     }
 
@@ -55,19 +59,20 @@ public class Objective12 : MonoBehaviour
         }
     }
 
-    //void CheckProgress()
-    //{
-    //    //if (hasTriggerBed)
-    //    //{
-    //    if (DelayObjAfterComplete())
-    //    {
-    //        //LEVEL 2 COMPLETES HERE
-    //        OnObj12Complete?.Invoke(this, EventArgs.Empty);
-    //        Debug.Log("Level 2 completes here");
+    void CheckProgress()
+    {
+        if (hasInteractedWithUltraSoundMachine)
+        {
+            if (DelayObjAfterComplete())
+            {
+                ultrasoundCutscene.SetActive(true);
+                OnObj12Complete?.Invoke(this, EventArgs.Empty);
+            }
 
-    //    }
-    //    //}
-    //}
+
+        }
+    }
+
 
     private void OnDisable()
     {

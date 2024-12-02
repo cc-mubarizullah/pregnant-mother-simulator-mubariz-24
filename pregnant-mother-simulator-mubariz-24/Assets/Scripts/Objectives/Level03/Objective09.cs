@@ -7,6 +7,8 @@ public class Objective09 : MonoBehaviour
     [SerializeField] ObjectiveShowUI objectiveShowUI;
     [SerializeField] ObjectivesSO ninthObjective;
     [SerializeField] Objective9Trigger objective9Trigger;
+    [SerializeField] GameObject reportInHand;
+    [SerializeField] GameObject reportOnTable;
 
     public UnityEvent eventToHappenOnEnable;
     public UnityEvent eventToHappenOnDisEnable;
@@ -32,6 +34,8 @@ public class Objective09 : MonoBehaviour
     private void Objective9Trigger_OnPlayerTriggDocTable()
     {
         hasInteractedWithDoctor = true;
+        reportInHand.SetActive(false);
+        reportOnTable.SetActive(true);
     }
 
     private void Update()

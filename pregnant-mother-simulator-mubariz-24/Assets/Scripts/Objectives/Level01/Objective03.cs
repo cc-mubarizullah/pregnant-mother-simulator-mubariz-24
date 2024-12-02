@@ -65,7 +65,7 @@ public class Objective03 : MonoBehaviour
                 Destroy(gameObject, 0.1f);
 
                 //SEND MESSAGE HERE TO LEVEL01 TO SAVE THINGS TILL THIS
-                PlayerPrefs.SetInt("Level02Unlock", 1);
+                PlayerPrefs.SetInt("Level02Unlock", 10);
             }
         }
     }
