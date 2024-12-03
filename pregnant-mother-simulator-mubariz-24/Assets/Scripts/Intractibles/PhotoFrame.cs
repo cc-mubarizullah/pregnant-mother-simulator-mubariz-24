@@ -1,9 +1,17 @@
+using System;
 using UnityEngine;
 
 public class PhotoFrame : MonoBehaviour, IInteractWithIneractables
 {
+    
+
     [SerializeField] GameObject photoFrameInPlayer;
     [SerializeField] InteractiveItemTextUI interactiveItemText;
+    [SerializeField] GameObject particleSystemGO;
+    [SerializeField] GameObject dropPlaceObject;
+    [SerializeField] GameObject whiteBabyFrame;
+
+
     public void Interact()
     {
         interactiveItemText.SetItemText("Baby Photo");
@@ -11,7 +19,9 @@ public class PhotoFrame : MonoBehaviour, IInteractWithIneractables
 
     public void PhysicalInteract()
     {
+        dropPlaceObject.layer = 7;
         photoFrameInPlayer.SetActive(true);
-        Destroy(gameObject);
+        particleSystemGO.SetActive(true);
+        gameObject.SetActive(false); 
     }
 }

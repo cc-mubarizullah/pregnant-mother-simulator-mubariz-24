@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a62f760122173f74f8abe3032487c049, type: 3}
   m_Name: Objective 17
   m_EditorClassIdentifier: 
-  objectivesText: Go to doctor and show your reports.
-  objectiveId: 13
+  objectivesText: Collect all toys and put them in toy box.
+  objectiveId: 17
   isObjectiveComplete: 0
