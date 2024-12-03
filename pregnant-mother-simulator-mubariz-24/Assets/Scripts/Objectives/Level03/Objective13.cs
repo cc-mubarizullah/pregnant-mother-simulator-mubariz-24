@@ -63,9 +63,10 @@ public class Objective13 : MonoBehaviour
     void CheckProgress()
     {
             if (DelayObjAfterComplete())
-            {
-                OnObj13Complete?.Invoke(this, EventArgs.Empty);
-            }
+        {
+            OnObj13Complete?.Invoke(this, EventArgs.Empty);
+            PlayerPrefs.SetInt("Level04Unlock", 10);
+        }
     }
 
 

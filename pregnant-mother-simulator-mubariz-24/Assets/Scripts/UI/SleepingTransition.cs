@@ -6,7 +6,7 @@ public class SleepingTransition : MonoBehaviour
     [SerializeField] Image imageForSleepingTransition;
     float alphaValue;
     float initialValue = 0f;
-    float finalValue = 0.8f;
+    float finalValue = 0.9f;
     float elapsedtime;
     [SerializeField] float timeToAnimate = 5f;
 
