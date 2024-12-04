@@ -61,7 +61,7 @@ public class GameInput : MonoBehaviour
 
     private void Update()
     {
-        lookVector = gameInputActions.Player.Look.ReadValue<Vector2>();
+        //lookVector = gameInputActions.Player.Look.ReadValue<Vector2>();
         moveVector = gameInputActions.Player.Movement.ReadValue<Vector2>();
     }
 
