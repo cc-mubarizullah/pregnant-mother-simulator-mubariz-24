@@ -59,7 +59,7 @@ public class Objective02 : MonoBehaviour
     void DelayAfterActivation()
     {
         clock += Time.deltaTime;
-        if (clock > 2f && clock <2.1f)
+        if (clock > 1f && clock <1.1f)
         {
             OnObj02Update?.Invoke(this, EventArgs.Empty);
         }
@@ -84,7 +84,7 @@ public class Objective02 : MonoBehaviour
     bool DelayAfterObjectiveComplete()
     {
         clock2 += Time.deltaTime;
-        if (clock2 >= 2f)
+        if (clock2 >= 1f)
         {
             return true;
         }
@@ -96,7 +96,6 @@ public class Objective02 : MonoBehaviour
         if (!hasEatenWrongMedicine)
         {
             hintUI.gameObject.SetActive(true);
-            SFXmanager.Instance.PlaySoundEffectOnPosition(SFXmanager.Instance.errorSFX, Player.Instance.transform.position);
             hintUI.ShowHintText(eatingWrongMedicineWarning);
             hasEatenWrongMedicine = true;
         }

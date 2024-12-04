@@ -84,7 +84,6 @@ public class Objective18 : MonoBehaviour
         if (waterGlassTaken < 2)
         {
             waterGlassTaken++;
-            glass.DrinkAnimation();
             SFXmanager.Instance.PlaySoundEffectOnPosition(SFXmanager.Instance.waterDrinkSFX, Player.Instance.transform.position);
         }
         if (waterGlassTaken >= totalWaterGlassTaken)

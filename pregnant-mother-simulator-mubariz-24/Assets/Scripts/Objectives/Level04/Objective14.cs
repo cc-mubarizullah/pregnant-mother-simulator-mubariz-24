@@ -45,8 +45,6 @@ public class Objective14 : MonoBehaviour
 
     }
 
-
-
     private void Update()
     {
         CheckingAllFoodItems();
@@ -77,7 +75,7 @@ public class Objective14 : MonoBehaviour
     bool DelayAfterObjComplete()
     {
         clock2 += Time.deltaTime;
-        if (clock2 >= 2f)
+        if (clock2 >= 1f)
         {
             return true;
         }
@@ -87,7 +85,7 @@ public class Objective14 : MonoBehaviour
     void DelayAfterActivation()     // this function will fire event that objective ui will listen and show objective animation
     {
         clock += Time.deltaTime;
-        if (clock > 2f && clock < 2.1f)
+        if (clock > 1f && clock < 1.1f)
         {
             OnObj14Update?.Invoke(this, EventArgs.Empty);
         }
@@ -111,7 +109,6 @@ public class Objective14 : MonoBehaviour
         if (!hasEatenHealthty)
         {
             hintUI.gameObject.SetActive(true);
-            SFXmanager.Instance.PlaySoundEffectOnPosition(SFXmanager.Instance.errorSFX, Player.Instance.transform.position);
             hintUI.ShowHintText(textOnEatingUnhealthyFood);
             hasEatenHealthty = true;
         }

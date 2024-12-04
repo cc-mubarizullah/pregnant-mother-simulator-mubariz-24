@@ -1,5 +1,4 @@
 using System;
-using UnityEditor.Media;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,6 +16,7 @@ public class Objective05 : MonoBehaviour
     bool interactedWithMedicalRecod;
     float clock;
     float clock2;
+    
     MedicalRecord medicalRecord;
     private void OnEnable()
     {
@@ -42,16 +42,16 @@ public class Objective05 : MonoBehaviour
             if (Delay())
             {
                 //objective complete here
-                OnObj05Complete?.Invoke(this, EventArgs.Empty);
-                fifthObjectiveSO.isObjectiveComplete = true;
-                Destroy(gameObject, 0.1f);
+            OnObj05Complete?.Invoke(this, EventArgs.Empty);
+            fifthObjectiveSO.isObjectiveComplete = true;
+            Destroy(gameObject, 0.1f);
             }
         }
     }
     void DelayObjUIAfterActivation()   // this function will be called by update and corresponding objective will be shown after 4 sec
     {
         clock += Time.deltaTime;
-        if (clock > 2f && clock < 2.1f)
+        if (clock > 1f && clock < 1.1f)
         {
             OnObj05Update?.Invoke(this, EventArgs.Empty);
         }
@@ -60,7 +60,7 @@ public class Objective05 : MonoBehaviour
     bool Delay()
     {
         clock2 += Time.deltaTime;
-        if (clock2 >= 2f)
+        if (clock2 >= 1f)
         {
             return true;
         }

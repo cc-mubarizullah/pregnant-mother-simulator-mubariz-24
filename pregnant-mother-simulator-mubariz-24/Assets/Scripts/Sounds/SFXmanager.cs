@@ -9,7 +9,6 @@ public class SFXmanager : MonoBehaviour
     public AudioClip objectiveUpdateSFX;
     public AudioClip objectiveCompleteSFX;
     public AudioClip waterPouringSFX;
-    public AudioClip errorSFX;
     public AudioClip waterDrinkSFX;
     public AudioClip hintSFX;
 

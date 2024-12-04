@@ -44,7 +44,7 @@ public class Objective12 : MonoBehaviour
     bool DelayObjAfterComplete()
     {
         clock2 += Time.deltaTime;
-        if (clock2 >= 2f)
+        if (clock2 >= 1f)
         {
             return true;
         }
@@ -53,7 +53,7 @@ public class Objective12 : MonoBehaviour
     void DelayObjUIAfterActivation()   // this function will be called by update and corresponding objective will be shown after 4 sec
     {
         clock += Time.deltaTime;
-        if (clock > 2f && clock < 2.1f)
+        if (clock > 0f && clock <0.1f)
         {
             OnObj12Update?.Invoke(this, EventArgs.Empty);
         }
@@ -67,8 +67,8 @@ public class Objective12 : MonoBehaviour
             {
                 ultrasoundCutscene.SetActive(true);
                 OnObj12Complete?.Invoke(this, EventArgs.Empty);
+                Destroy(gameObject, 30f);
             }
-
 
         }
     }

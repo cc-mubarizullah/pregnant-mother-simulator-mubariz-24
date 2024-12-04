@@ -58,7 +58,7 @@ public class Objective04 : MonoBehaviour
     void DelayObjAfterActivation()   // this function will be called bu update and corresponding objective will be shown after 4 sec
     {
         clock += Time.deltaTime;
-        if (clock > 2f && clock < 2.1f)
+        if (clock > 1f && clock < 1.1f)
         {
             OnObj04Update?.Invoke(this, EventArgs.Empty);
         }
@@ -66,7 +66,7 @@ public class Objective04 : MonoBehaviour
     bool Delay()   
     {
         clock2 += Time.deltaTime;
-        if (clock2 > 2f)
+        if (clock2 > 1f)
         {
             return true;
         }

@@ -59,7 +59,7 @@ public class Objective11 : MonoBehaviour
     bool DelayObjAfterComplete()
     {
         clock2 += Time.deltaTime;
-        if (clock2 >= 2f)
+        if (clock2 >= 1f)
         {
             return true;
         }
@@ -68,7 +68,7 @@ public class Objective11 : MonoBehaviour
     void DelayObjUIAfterActivation()   // this function will be called by update and corresponding objective will be shown after 4 sec
     {
         clock += Time.deltaTime;
-        if (clock > 2.5f && clock < 2.6f)
+        if (clock > 1f && clock < 1.1f)
         {
             OnObj11Update?.Invoke(this, EventArgs.Empty);
         }

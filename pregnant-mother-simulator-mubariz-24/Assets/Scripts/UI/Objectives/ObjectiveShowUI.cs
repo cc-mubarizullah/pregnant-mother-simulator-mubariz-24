@@ -48,6 +48,16 @@ public class ObjectiveShowUI : MonoBehaviour
         Objective18.OnObj18Complete += ObjectiveCompleteAnimation;
         Objective19.OnObj19Update += ObjectiveUpdateAnimation;
         Objective19.OnObj19Complete += ObjectiveCompleteAnimation;
+        Objective20.OnObj20Update += ObjectiveUpdateAnimation;
+        Objective20.OnObj20Complete += ObjectiveCompleteAnimation;
+        Objective21.OnObj21Update += ObjectiveUpdateAnimation;
+        Objective21.OnObj21Complete += ObjectiveCompleteAnimation;
+        Objective22.OnObj22Update += ObjectiveUpdateAnimation;
+        Objective22.OnObj22Complete += ObjectiveCompleteAnimation;
+        Objective23.OnObj23Update += ObjectiveUpdateAnimation;
+        Objective23.OnObj23Complete += ObjectiveCompleteAnimation;
+        Objective24.OnObj24Update += ObjectiveUpdateAnimation;
+        Objective24.OnObj24Complete += ObjectiveCompleteAnimation;
 
     }
 

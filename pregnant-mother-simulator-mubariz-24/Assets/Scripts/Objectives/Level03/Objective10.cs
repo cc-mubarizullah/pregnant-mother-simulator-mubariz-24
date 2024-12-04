@@ -69,7 +69,7 @@ public class Objective10 : MonoBehaviour
     void DelayObjUIAfterActivation()   // this function will be called by update and corresponding objective will be shown after 4 sec
     {
         clock += Time.deltaTime;
-        if (clock > 2.5f && clock < 2.6f)
+        if (clock > 1f && clock < 1.1f)
         {
             OnObj10Update?.Invoke(this, EventArgs.Empty);
         }

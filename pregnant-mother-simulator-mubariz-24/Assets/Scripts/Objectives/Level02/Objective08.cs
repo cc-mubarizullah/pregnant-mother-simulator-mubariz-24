@@ -46,7 +46,7 @@ public class Objective08 : MonoBehaviour
     bool DelayObjAfterComplete()
     {
         clock2 += Time.deltaTime;
-        if (clock2 >= 2f)
+        if (clock2 >= 1f)
         {
             return true;
         }
@@ -70,7 +70,7 @@ public class Objective08 : MonoBehaviour
                 //LEVEL 2 COMPLETES HERE
                 OnObj08Complete?.Invoke(this, EventArgs.Empty);
                 PlayerPrefs.SetInt("Level03Unlock", 10);
-                
+                Destroy(gameObject, 2f);
             }
         }
     }

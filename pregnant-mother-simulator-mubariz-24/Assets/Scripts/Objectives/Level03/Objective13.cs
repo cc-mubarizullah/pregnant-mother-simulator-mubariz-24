@@ -45,7 +45,7 @@ public class Objective13 : MonoBehaviour
     bool DelayObjAfterComplete()
     {
         clock2 += Time.deltaTime;
-        if (clock2 >= 2f)
+        if (clock2 >= 0.1f)
         {
             return true;
         }
@@ -54,7 +54,7 @@ public class Objective13 : MonoBehaviour
     void DelayObjUIAfterActivation()   // this function will be called by update and corresponding objective will be shown after 4 sec
     {
         clock += Time.deltaTime;
-        if (clock > 0.4f && clock < 0.5f)
+        if (clock > 1f && clock < 1.1f)
         {
             OnObj13Update?.Invoke(this, EventArgs.Empty);
         }
@@ -62,10 +62,11 @@ public class Objective13 : MonoBehaviour
 
     void CheckProgress()
     {
-            if (DelayObjAfterComplete())
+        if (DelayObjAfterComplete())
         {
             OnObj13Complete?.Invoke(this, EventArgs.Empty);
             PlayerPrefs.SetInt("Level04Unlock", 10);
+            Destroy(gameObject);
         }
     }
 

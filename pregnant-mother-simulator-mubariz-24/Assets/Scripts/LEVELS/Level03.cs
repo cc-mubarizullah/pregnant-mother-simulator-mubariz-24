@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Level03 : MonoBehaviour
 {
@@ -6,6 +7,14 @@ public class Level03 : MonoBehaviour
     [SerializeField] Transform playerPositionInLevel3;
 
     public GameObject[] objOfLevel3;
+
+    [Tooltip("Enable or disable gameobject according to the last level")]
+    public UnityEvent ProgressFromLastLevel;
+
+    private void OnEnable()
+    {
+        ProgressFromLastLevel?.Invoke();
+    }
     private void Start()
     {
         reportOnPlayerHand.SetActive(true);

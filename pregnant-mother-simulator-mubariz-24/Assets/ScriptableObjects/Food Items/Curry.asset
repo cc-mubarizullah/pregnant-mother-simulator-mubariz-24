@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Curry
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  prefabName: 
+  prefabName: Curry Rice
   prefabImage: {fileID: 0}

@@ -12,7 +12,6 @@ public class Lock : MonoBehaviour
             if (other.gameObject.CompareTag("Player"))
             {
                 hintUI.gameObject.SetActive(true);
-                SFXmanager.Instance.PlaySoundEffectOnPosition(SFXmanager.Instance.errorSFX, Player.Instance.transform.position);
                 hintUI.ShowHintText("Play More to Unlock");
                 hasTriggeredAlready = true;
             }

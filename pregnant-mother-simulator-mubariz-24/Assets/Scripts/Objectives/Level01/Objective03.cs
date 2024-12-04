@@ -1,7 +1,6 @@
 using UnityEngine;
 using System;
 using UnityEngine.Events;
-using UnityEditor.ShaderGraph.Internal;
 public class Objective03 : MonoBehaviour
 {
     [SerializeField] ObjectivesSO thirdObjectiveSO;
@@ -56,7 +55,6 @@ public class Objective03 : MonoBehaviour
         {
             if (DelayAfterObjComplete())
             {
-                Debug.Log("level 1 is completed");
                 thirdObjectiveSO.isObjectiveComplete = true;
                 //LEVEL 01 ENDS HERE
                 OnObj03Complete?.Invoke(this, EventArgs.Empty);
@@ -73,7 +71,7 @@ public class Objective03 : MonoBehaviour
     bool DelayAfterObjComplete()
     {
         clock2 += Time.deltaTime;
-        if (clock2 >= 2f)
+        if (clock2 >= 1f)
         {
             return true;
         }
@@ -85,8 +83,7 @@ public class Objective03 : MonoBehaviour
     {
         if (waterGlassTaken < 2)
         {
-            waterGlassTaken++;
-            glass.DrinkAnimation();
+            waterGlassTaken++;      
             SFXmanager.Instance.PlaySoundEffectOnPosition(SFXmanager.Instance.waterDrinkSFX, Player.Instance.transform.position);
         }
         if (waterGlassTaken >= totalWaterGlassTaken)

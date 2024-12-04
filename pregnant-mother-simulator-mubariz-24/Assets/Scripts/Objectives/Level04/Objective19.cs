@@ -69,6 +69,7 @@ public class Objective19 : MonoBehaviour
             {
                 //LEVEL 2 COMPLETES HERE
                 OnObj19Complete?.Invoke(this, EventArgs.Empty);
+                Destroy(gameObject, 0.5f);
                 PlayerPrefs.SetInt("Level05Unlock", 10);
 
             }
