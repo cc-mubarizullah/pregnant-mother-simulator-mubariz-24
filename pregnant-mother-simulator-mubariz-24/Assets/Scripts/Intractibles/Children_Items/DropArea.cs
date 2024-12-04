@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class DropArea : MonoBehaviour, IInteractWithIneractables
 {
-    public Action OnBabyItemDropped;
+    public event Action OnBabyItemDropped;
 
     InteractiveItemTextUI itemTextUI;
     [SerializeField] GameObject particleSystemGOofArea;
-    [SerializeField] GameObject visualToSetActive;
+    [SerializeField] GameObject[] visualToSetActive;
     [SerializeField] GameObject itemOnPlayerHand;
     private void Start()
     {
@@ -21,7 +21,11 @@ public class DropArea : MonoBehaviour, IInteractWithIneractables
     public void PhysicalInteract()
     {
         particleSystemGOofArea.SetActive(false);
-        visualToSetActive.SetActive(true);
+        foreach (var item in visualToSetActive)
+        {
+            item.SetActive(true);
+        }
+
         itemOnPlayerHand.SetActive(false);
         OnBabyItemDropped?.Invoke();
         gameObject.layer = 0;

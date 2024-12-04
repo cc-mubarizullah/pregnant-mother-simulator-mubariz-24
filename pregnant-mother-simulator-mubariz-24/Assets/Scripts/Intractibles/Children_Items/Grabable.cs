@@ -20,7 +20,7 @@ public class Grabable : MonoBehaviour, IInteractWithIneractables
 
     public void PhysicalInteract()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
         AreaToSetInteractive.layer = 7;
         particleSysGOofArea.SetActive(true);
         itemOnPlayerToSetActive.SetActive(true);    

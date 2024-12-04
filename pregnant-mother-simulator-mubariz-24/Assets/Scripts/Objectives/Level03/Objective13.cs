@@ -19,6 +19,8 @@ public class Objective13 : MonoBehaviour
     float clock;
     float clock2;
 
+    bool hasVisitedDoctor;
+
     private void OnEnable()
     {
         eventToHappenOnEnable.Invoke();
@@ -33,6 +35,7 @@ public class Objective13 : MonoBehaviour
     {
         reportInHand.SetActive(true);
         reportOnTable.SetActive(false);
+        hasVisitedDoctor = true;
     }
 
     private void Update()
@@ -45,7 +48,7 @@ public class Objective13 : MonoBehaviour
     bool DelayObjAfterComplete()
     {
         clock2 += Time.deltaTime;
-        if (clock2 >= 0.1f)
+        if (clock2 >= 0.5f)
         {
             return true;
         }
@@ -53,7 +56,7 @@ public class Objective13 : MonoBehaviour
     }
     void DelayObjUIAfterActivation()   // this function will be called by update and corresponding objective will be shown after 4 sec
     {
-        clock += Time.deltaTime;
+            clock += Time.deltaTime;
         if (clock > 1f && clock < 1.1f)
         {
             OnObj13Update?.Invoke(this, EventArgs.Empty);
@@ -62,11 +65,14 @@ public class Objective13 : MonoBehaviour
 
     void CheckProgress()
     {
-        if (DelayObjAfterComplete())
+        if (hasVisitedDoctor)
         {
-            OnObj13Complete?.Invoke(this, EventArgs.Empty);
-            PlayerPrefs.SetInt("Level04Unlock", 10);
-            Destroy(gameObject);
+            if (DelayObjAfterComplete())
+            {
+                OnObj13Complete?.Invoke(this, EventArgs.Empty);
+                PlayerPrefs.SetInt("Level04Unlock", 10);
+                Destroy(gameObject);
+            }
         }
     }
 

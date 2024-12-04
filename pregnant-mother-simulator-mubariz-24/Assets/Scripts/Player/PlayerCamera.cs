@@ -36,6 +36,7 @@ public class PlayerCamera : MonoBehaviour
 
     private void GetTouchInput()
     {
+        lookInput = Vector2.zero;
         for (int i = 0; i < Input.touchCount; i++)
         {
             Touch t = Input.GetTouch(i);
@@ -46,27 +47,18 @@ public class PlayerCamera : MonoBehaviour
                     if (t.position.x > halfOfScreenWidth && rightFingerId == -1)
                     {
                         rightFingerId = t.fingerId;
-                        Debug.Log("Tracking right finger");
                     }
-
                     else if (t.position.x < halfOfScreenWidth && leftFingerId == -1)
                     {
                         leftFingerId = t.fingerId;
-                        Debug.Log("Tracking left finger");
                     }
                     break;
                 case TouchPhase.Moved:
+                case TouchPhase.Stationary:
                     // get input for looking around
-                    if(t.fingerId == leftFingerId)
+                    if (t.fingerId == leftFingerId)
                     {
                         lookInput = t.deltaPosition * cameraSentivity * Time.deltaTime;
-                    }
-                    break;
-                case TouchPhase.Stationary:
-                    // if right finger is stationary assign lookInput to zero
-                    if(t.fingerId == rightFingerId)
-                    {
-                        lookInput = Vector2.zero;
                     }
                     break;
                 case TouchPhase.Ended:
@@ -74,12 +66,10 @@ public class PlayerCamera : MonoBehaviour
                     if (t.fingerId == leftFingerId)
                     {
                         leftFingerId = -1;
-                        Debug.Log("stop tracking left finger");
                     }
                     else if (t.fingerId == rightFingerId)
                     {
                         rightFingerId = -1;
-                        Debug.Log("stop tracking right finger");
                     }
                     break;
                 default:

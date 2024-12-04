@@ -80,4 +80,16 @@ public class Telephone : MonoBehaviour, IInteractWithIneractables
             }
         }
     }
+
+
+    //these function will be called by animation event
+    public void PlayerCannotMove()
+    {
+        Player.Instance.canMove = false;
+    }
+
+    public void PlayerCanMoveNow()
+    {
+        Player.Instance.canMove = true;
+    }
 }

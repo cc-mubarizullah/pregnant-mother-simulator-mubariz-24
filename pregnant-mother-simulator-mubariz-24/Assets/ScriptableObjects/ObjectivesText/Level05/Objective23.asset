@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a62f760122173f74f8abe3032487c049, type: 3}
   m_Name: Objective23
   m_EditorClassIdentifier: 
-  objectivesText: Find baby's teething toys and place them in baby's room.
+  objectivesText: Find baby's diapers and place them in baby's room.
   objectiveId: 23
   isObjectiveComplete: 0

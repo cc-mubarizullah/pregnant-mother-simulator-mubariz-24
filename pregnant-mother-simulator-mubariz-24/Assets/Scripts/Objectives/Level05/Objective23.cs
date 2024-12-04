@@ -4,11 +4,10 @@ using UnityEngine.Events;
 
 public class Objective23 : MonoBehaviour
 {
-    [SerializeField] ObjectivesSO twentyThirdObjectiveSO;
+    [SerializeField] ObjectivesSO tewentyThreeObjectiveSO;
     [SerializeField] ObjectiveShowUI objectiveShowUI;
-    ToysToGather[] toysToGather;
-    [SerializeField] GameObject toyBoxGO;
-    ToyBox toyBox;
+    [SerializeField] GameObject diaperGameObject;
+    [SerializeField] DropArea dropAreaComponentOfDiaper;
 
     public UnityEvent eventsToCallWhenEnable;
     public UnityEvent eventsToCallWhenDisable;
@@ -16,10 +15,9 @@ public class Objective23 : MonoBehaviour
     public static event EventHandler OnObj23Update;
     public static event EventHandler OnObj23Complete;
 
-    int toysGathered;
-    int totalToys;
-    bool hasCollectedAllToys;
-    bool hasPuttedInBox;
+
+    bool hasPlacedDiaper;
+
 
     float clock;
     float clock2;
@@ -31,53 +29,34 @@ public class Objective23 : MonoBehaviour
 
     private void Start()
     {
-        toysToGather = FindObjectsByType<ToysToGather>(FindObjectsInactive.Include, FindObjectsSortMode.None);
-        foreach (ToysToGather obj in toysToGather)
-        {
-            obj.gameObject.layer = 7;
-            obj.OnToyGather += Obj_OnToyGather;
-        }
-        totalToys = toysToGather.Length;
-
-        toyBox = toyBoxGO.GetComponent<ToyBox>();
-        toyBox.OnPutInBox += ToyBox_OnPutInBox;
+        diaperGameObject.layer = 7;
+        dropAreaComponentOfDiaper.OnBabyItemDropped += PlayerPlacedObject;
     }
 
-    private void ToyBox_OnPutInBox()
+
+    private void PlayerPlacedObject()
     {
-        hasPuttedInBox = true;
+        hasPlacedDiaper = true;
     }
 
-    private void Obj_OnToyGather()
-    {
-        if (toysGathered < totalToys)
-            toysGathered++;
-
-        if (toysGathered == totalToys)
-        {
-            hasCollectedAllToys = true;
-            toyBoxGO.layer = 7;
-        }
-    }
 
     private void Update()
     {
         DelayAfterActivation();
-        objectiveShowUI.ShowObjectiveText(twentyThirdObjectiveSO.objectivesText);
+        objectiveShowUI.ShowObjectiveText(tewentyThreeObjectiveSO.objectivesText);
         CheckProgress();
     }
 
     void CheckProgress()
     {
-        if (hasPuttedInBox && hasCollectedAllToys)
+        if (hasPlacedDiaper)
         {
             if (DelayAfterObjComplete())
             {
                 {
                     //OBJECTIVE COMPLETE
                     OnObj23Complete?.Invoke(this, EventArgs.Empty);
-                    toyBoxGO.layer = 0;
-                    Destroy(gameObject, 0.5f);
+                    Destroy(gameObject);
 
                 }
             }

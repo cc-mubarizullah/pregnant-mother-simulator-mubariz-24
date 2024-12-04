@@ -53,11 +53,11 @@ public class Player : MonoBehaviour
     [Tooltip("The layer of gameobjects with which player can interact.")]
     [SerializeField] LayerMask interactLayer;
 
-
-   
-
-   
-    bool canInteract = true;
+    public bool canMove;
+    private void Start()
+    {
+        canMove = true;
+    }
 
     private void Awake()
     {
@@ -69,7 +69,11 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        Movement();
+        if (canMove)
+        {
+            Movement();
+        }
+        
         RaycastingForInteractbles();
     }
 
@@ -91,8 +95,6 @@ public class Player : MonoBehaviour
 
     private void RaycastingForInteractbles()
     {
-        if (canInteract)
-        {
             Ray ray = new Ray(cameraRootGameobject.transform.position, cameraRootGameobject.transform.forward);
 
             bool hasHitInterectables = Physics.Raycast(ray, out RaycastHit hitInfo, distanceOfRaycast, interactLayer);
@@ -131,7 +133,6 @@ public class Player : MonoBehaviour
             {
                 OnIntract?.Invoke(this, new OnIntractEventArgs { intracting = false });
             }
-        }
     }
 
     public Vector3 GetGrabPosition()

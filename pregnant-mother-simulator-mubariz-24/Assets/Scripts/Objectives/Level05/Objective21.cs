@@ -15,9 +15,9 @@ public class Objective21 : MonoBehaviour
     public static event EventHandler OnObj21Update;
     public static event EventHandler OnObj21Complete;
 
-    
+
     bool hasPlacedClothes;
-    
+
 
     float clock;
     float clock2;
@@ -33,12 +33,12 @@ public class Objective21 : MonoBehaviour
         dropAreaComponentOfClothes.OnBabyItemDropped += PlayerPlacedObject;
     }
 
-    
+
     private void PlayerPlacedObject()
     {
         hasPlacedClothes = true;
     }
-    
+
 
     private void Update()
     {
