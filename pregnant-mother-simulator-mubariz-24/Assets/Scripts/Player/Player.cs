@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
     [Header("Prefrences")]
     [SerializeField] float playerSpeed = 5f;
 
-    [SerializeField] float cameraRotationSpeed = 1f;
+    
 
     [SerializeField] float gravity = -1f;
     
@@ -54,15 +54,9 @@ public class Player : MonoBehaviour
     [SerializeField] LayerMask interactLayer;
 
 
-    [Space(30)]
-    [SerializeField] bool lookWithMouse;
+   
 
-    float cameraTopClamp = 90f;
-    float cameraButtomClamp = -90f;
-    float thresholdOrDeadZone = 0.01f;
-    private float cinemachineTargetPitch;
-    private float rotationVelocity;
-    float mealEatenTimer;
+   
     bool canInteract = true;
 
     private void Awake()
@@ -79,10 +73,7 @@ public class Player : MonoBehaviour
         RaycastingForInteractbles();
     }
 
-    private void LateUpdate()
-    {
-        CameraRotation();
-    }
+    
 
     public void Movement()
     {
@@ -96,53 +87,6 @@ public class Player : MonoBehaviour
         movement.y = isGrounded ? 0f : gravity;
 
         characterController.Move(playerSpeed * Time.deltaTime * movement);
-    }
-
-    private void CameraRotationLogic()
-    {
-        if (gameInput.GetLookVector().sqrMagnitude >= thresholdOrDeadZone)
-        {
-            cinemachineTargetPitch += gameInput.GetLookVector().y * cameraRotationSpeed;       // ..FOR CAMERA UP ROTATION..set variable for y component of look vector2
-            rotationVelocity = gameInput.GetLookVector().x * cameraRotationSpeed;                               // ..FOR CAMERA SIDE WAYS ROTATION..set variable for x component of look vector2
-
-            // now clamping the up rotation
-            cinemachineTargetPitch = Mathf.Clamp(cinemachineTargetPitch, cameraButtomClamp, cameraTopClamp);
-
-            // updating cinemachine target pitch
-            cameraRootGameobject.transform.localRotation = Quaternion.Euler(cinemachineTargetPitch, 0f, 0f);
-
-            // updating player rotation according to the rotationVelocity
-            transform.Rotate(Vector3.up * rotationVelocity);
-        }
-    }
-
-    public void CameraRotation()
-    {
-        if (lookWithMouse)
-        {
-            CameraRotationLogic();
-        }
-        else if (IsTouchedAtLeftSide())
-        {
-            CameraRotationLogic();
-        }
-    }
-
-    public bool IsTouchedAtLeftSide()
-    {
-        if (Input.touchCount > 0)
-        {
-            // Get the first touch
-            Touch touch = Input.GetTouch(0);
-
-            // Check if the touch is in the left two-thirds of the screen
-            if (touch.position.x < 2 * (Screen.width) / 3)
-            {
-                // Allow rotation when the touch begins, moves, or is stationary
-                return touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary;
-            }
-        }
-        return false;
     }
 
     private void RaycastingForInteractbles()
