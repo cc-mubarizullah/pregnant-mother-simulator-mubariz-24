@@ -36,20 +36,9 @@ public class LevelManager : MonoBehaviour
             case LockOrUnlock.No:
                 toLock = false;
                 break;
-            default:
-                break;
         }
-        foreach (GameObject collider in upstairLock)
-        {
-            collider.SetActive(toLock);
-        }
-        Player.Instance.transform.position = playerPositionInLevel.position;
-        foreach (GameObject obj in objOfThisLevel)
-        {
-            obj.SetActive(false);
-        }
-        objOfThisLevel[0].SetActive(true);
 
+        // CHECKING ENUM STATE ON THE BASIS OF WHICH UPSTAIRS WILL BE LOCKED OR UNLOCKED
         switch (lockUpstairOrNot)
         {
             case LockOrUnlock.Yes:
@@ -61,6 +50,25 @@ public class LevelManager : MonoBehaviour
             default:
                 break;
         }
+
+        //SETTING ACTIVATION OF COLLIDER AND TRIGGER
+        foreach (GameObject collider in upstairLock)
+        {
+            collider.SetActive(toLock);
+        }
+
+        // SETTING PLAYER POSITION ACCORDING TO THE LEVEL
+        Player.Instance.transform.position = playerPositionInLevel.position;
+
+
+        //DEACTIVATING ALL THE LEVELS IN THE ARRAY
+        foreach (GameObject obj in objOfThisLevel)
+        {
+            obj.SetActive(false);
+        }
+
+        //ACTIVATING THE FIRST ONE
+        objOfThisLevel[0].SetActive(true);
     }
 
 }

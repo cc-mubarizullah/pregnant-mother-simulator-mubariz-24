@@ -22,7 +22,7 @@ public class Objective06 : MonoBehaviour
     float clock;
     float clock2;
     int essentialsCount;
-    int totalEssentialsToGrab = 4;
+   
     bool hasEssentialsGathered;
     EssentialItem[] allEssentialItems;      // declared an array to store all the gameobject with same class
 
@@ -102,6 +102,7 @@ public class Objective06 : MonoBehaviour
 
     void EssentialItem_OnGrabEssential(EssentialItem item)
     {
+        int totalEssentialsToGrab = allEssentialItems.Length;
         essentialsCount++;
         essentialItemsList.Remove(item);
 
