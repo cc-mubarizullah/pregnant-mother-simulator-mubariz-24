@@ -21,12 +21,12 @@ public class Objective04 : MonoBehaviour
     private void OnEnable()
     {
         eventsToCallWhenEnable.Invoke();
+        telePhone = FindAnyObjectByType<Telephone>();
     }
 
 
     private void Start()
     {
-        telePhone = FindAnyObjectByType<Telephone>();
         telePhone.gameObject.layer = 7;       // set telephone interactive 
         telePhone.OnCallEnds += TelePhone_OnCallEnds;
     }

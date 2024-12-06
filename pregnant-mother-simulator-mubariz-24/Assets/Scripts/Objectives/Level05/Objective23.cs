@@ -57,7 +57,7 @@ public class Objective23 : MonoBehaviour
                     //OBJECTIVE COMPLETE
                     OnObj23Complete?.Invoke(this, EventArgs.Empty);
                     Destroy(gameObject);
-
+                    PlayerPrefs.SetInt("Level06Unlock", 10);
                 }
             }
         }

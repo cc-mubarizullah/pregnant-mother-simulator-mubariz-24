@@ -9,6 +9,8 @@ public class Objective01 : MonoBehaviour
     [SerializeField] ObjectivesSO firstObjectiveSO;
     [SerializeField] ObjectiveShowUI objectiveShowUI;
     [SerializeField] HintUI hintUI;
+    [SerializeField] GameObject player;
+    [SerializeField] Transform playerPositionInLevel;
 
     [SerializeField] string textOnEatingUnhealthyFood;
     FoodItem[] foodItemAtStart;
@@ -37,8 +39,6 @@ public class Objective01 : MonoBehaviour
             item.OnEatingHealthy += Item_OnEatingHealthy;
             item.OnEatingUnhealthy += Item_OnEatingUnhealthy;
         }
-
-        objectiveShowUI.gameObject.SetActive(true);
     }
     
     private void Update()
@@ -88,8 +88,9 @@ public class Objective01 : MonoBehaviour
     void DelayAfterActivation()     // this function will fire event that objective ui will listen and show objective animation
     {
         clock += Time.deltaTime;
-        if (clock > 1f && clock < 1.1f)
+        if (clock > 3f && clock < 3.1f)
         {
+            player.transform.position = playerPositionInLevel.position;
             OnObj01Update?.Invoke(this, EventArgs.Empty);
         }
     }

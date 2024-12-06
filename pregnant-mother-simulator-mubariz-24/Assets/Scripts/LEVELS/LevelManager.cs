@@ -10,8 +10,6 @@ public class LevelManager : MonoBehaviour
     }
 
     [SerializeField] LockOrUnlock lockUpstairOrNot;
-    [SerializeField] GameObject player;
-    [SerializeField] Transform playerPositionInLevel;
     [SerializeField] GameObject[] upstairLock;
 
     public GameObject firstObjOfThisLevel;
@@ -24,9 +22,9 @@ public class LevelManager : MonoBehaviour
     private void OnEnable()
     {
         ProgressFromLastLevel?.Invoke();
-        // SETTING PLAYER POSITION ACCORDING TO THE LEVEL
 
-        player.transform.position = playerPositionInLevel.transform.position;
+        // Invoke progress-related events
+        ProgressFromLastLevel?.Invoke();
     }
 
     private void Start()
