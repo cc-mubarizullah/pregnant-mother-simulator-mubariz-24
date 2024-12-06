@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerCamera : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PlayerCamera : MonoBehaviour
 
     [SerializeField] GameObject cameraRootGameObject;
     [SerializeField] float cameraSentivity;
+    [SerializeField] Slider sensitiviySlider;
     
     Vector2 lookInput;
 
@@ -16,6 +18,9 @@ public class PlayerCamera : MonoBehaviour
 
     private void Start()
     {
+        cameraSentivity = 5f;
+        cameraSentivity = sensitiviySlider.value;
+        sensitiviySlider.onValueChanged.AddListener(OnCamerSensitivityChanged);
         leftFingerId =-1;
         rightFingerId = -1;
 
@@ -85,5 +90,10 @@ public class PlayerCamera : MonoBehaviour
         cameraRootGameObject.transform.localRotation = Quaternion.Euler(cameraPitch, 0, 0);
 
         transform.Rotate(transform.up, lookInput.x);
+    }
+
+    private void OnCamerSensitivityChanged(float value)
+    {
+        cameraSentivity = value;
     }
 }

@@ -9,6 +9,7 @@ public class LevelSelection : MonoBehaviour
     const string LEVEL03 = "Level03";
     const string LEVEL04 = "Level04";
     const string LEVEL05 = "Level05";
+    const string LEVEL06 = "Level06";
 
     [SerializeField] LoadingScreenManager loadingScreenManager;
     public event EventHandler<OnLevelSelectedEventArgs> OnLevelSelected;
@@ -54,6 +55,14 @@ public class LevelSelection : MonoBehaviour
         OnLevelSelected?.Invoke(this, new OnLevelSelectedEventArgs()
         {
             levelName = LEVEL05
+        });
+    }
+    public void Level06()
+    {
+        StartCoroutine(loadingScreenManager.LoadSceneASync("GamePlay"));
+        OnLevelSelected?.Invoke(this, new OnLevelSelectedEventArgs()
+        {
+            levelName = LEVEL06
         });
     }
 }

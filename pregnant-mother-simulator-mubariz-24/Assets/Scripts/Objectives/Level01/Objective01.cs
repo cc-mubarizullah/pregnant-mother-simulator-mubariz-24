@@ -44,9 +44,6 @@ public class Objective01 : MonoBehaviour
         objectiveShowUI.gameObject.SetActive(true);
 
     }
-
-
-
     private void Update()
     {
         CheckingAllFoodItems();
@@ -66,6 +63,13 @@ public class Objective01 : MonoBehaviour
             {
                 //OBJECTIVE COMPLETE
                 firstObjectiveSO.isObjectiveComplete = true;
+                foreach (FoodItem item in foodItemLeft)
+                {
+                    if (item != null)
+                    {
+                        item.gameObject.layer = 0;
+                    }
+                }
                 // raising event when obj 1 complete
                 OnObj01Complete?.Invoke(this, EventArgs.Empty);
                 Destroy(gameObject, 0.1f);
@@ -118,13 +122,7 @@ public class Objective01 : MonoBehaviour
     private void OnDisable()
     {
         eventsToCallWhenDisable?.Invoke();
-        foreach (FoodItem item in foodItemLeft)
-        {
-            if (item != null)
-            {
-                item.gameObject.layer = 0;
-            }
-        }
+        
     }
 
 }

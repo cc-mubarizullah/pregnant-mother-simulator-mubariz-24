@@ -9,6 +9,12 @@ public class LevelHandler : MonoBehaviour //this script is attached with gameobj
     private void Start()
     {
         levelDataHolder = FindAnyObjectByType<LevelDataHolder>();    // made a variable ....this field can be null if we didn't start from mainmenu
+
+
+        //foreach (GameObject level in allLevels)        // iterates through all levels in the array and disable all
+        //{
+        //    level.SetActive(false);
+        //}
     }
     private void Update()
     {

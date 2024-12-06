@@ -14,7 +14,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] Transform playerPositionInLevel;
     [SerializeField] GameObject[] upstairLock;
 
-    public GameObject[] objOfThisLevel;
+    public GameObject firstObjOfThisLevel;
 
     [Tooltip("Enable or disable gameobject according to the last level")]
     public UnityEvent ProgressFromLastLevel;
@@ -60,15 +60,8 @@ public class LevelManager : MonoBehaviour
         // SETTING PLAYER POSITION ACCORDING TO THE LEVEL
         Player.Instance.transform.position = playerPositionInLevel.position;
 
-
-        //DEACTIVATING ALL THE LEVELS IN THE ARRAY
-        foreach (GameObject obj in objOfThisLevel)
-        {
-            obj.SetActive(false);
-        }
-
         //ACTIVATING THE FIRST ONE
-        objOfThisLevel[0].SetActive(true);
+        firstObjOfThisLevel.SetActive(true);
     }
 
 }

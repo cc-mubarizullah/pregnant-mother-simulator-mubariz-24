@@ -48,7 +48,7 @@ public class Objective13 : MonoBehaviour
     bool DelayObjAfterComplete()
     {
         clock2 += Time.deltaTime;
-        if (clock2 >= 0.5f)
+        if (clock2 >= 1.5f)
         {
             return true;
         }

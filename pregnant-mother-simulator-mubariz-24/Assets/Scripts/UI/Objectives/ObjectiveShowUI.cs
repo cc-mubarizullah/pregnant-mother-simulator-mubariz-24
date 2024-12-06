@@ -5,8 +5,9 @@ public class ObjectiveShowUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI objectiveTextUI;
     [Tooltip("This transform will hold the child of gameobject which holds the whole objective UI. In this the gameobject named emptyParent.")]
 
-    [SerializeField] Animator m_Animator;
 
+
+    [SerializeField] Animator m_Animator;
     private void Start()
     {
         m_Animator = GetComponent<Animator>();

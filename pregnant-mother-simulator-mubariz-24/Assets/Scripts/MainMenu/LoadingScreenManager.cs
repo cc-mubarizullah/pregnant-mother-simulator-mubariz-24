@@ -14,7 +14,6 @@ public class LoadingScreenManager : MonoBehaviour
         loadingScreen.SetActive(true);
         while (!operation.isDone)
         {
-            Debug.Log("the progress of loading in progress.operation is" + operation.progress);
             float progress = Mathf.Clamp01(operation.progress / 0.9f);
             imageToFill.fillAmount = progress;
             yield return null;

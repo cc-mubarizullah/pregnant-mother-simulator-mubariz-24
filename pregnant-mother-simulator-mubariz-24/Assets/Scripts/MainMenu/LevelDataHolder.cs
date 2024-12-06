@@ -9,7 +9,7 @@ public class LevelDataHolder : MonoBehaviour
     /// </summary>
     [SerializeField] LevelSelection levelSelection;  // ref of the class that will tell us the string of level e.g "LEVEL"
     public static LevelDataHolder Instance;  // we are making this class static
-    [HideInInspector]
+    //    [HideInInspector]
     public string LevelName; //this is the member of the class that will share the name of the level that will then iterate between all Levels names
     private void Awake()
     {
