@@ -10,7 +10,7 @@ public class LevelManager : MonoBehaviour
     }
 
     [SerializeField] LockOrUnlock lockUpstairOrNot;
-
+    [SerializeField] GameObject player;
     [SerializeField] Transform playerPositionInLevel;
     [SerializeField] GameObject[] upstairLock;
 
@@ -24,6 +24,9 @@ public class LevelManager : MonoBehaviour
     private void OnEnable()
     {
         ProgressFromLastLevel?.Invoke();
+        // SETTING PLAYER POSITION ACCORDING TO THE LEVEL
+
+        player.transform.position = playerPositionInLevel.transform.position;
     }
 
     private void Start()
@@ -57,11 +60,12 @@ public class LevelManager : MonoBehaviour
             collider.SetActive(toLock);
         }
 
-        // SETTING PLAYER POSITION ACCORDING TO THE LEVEL
-        Player.Instance.transform.position = playerPositionInLevel.position;
+
 
         //ACTIVATING THE FIRST ONE
         firstObjOfThisLevel.SetActive(true);
+
+
     }
 
 }

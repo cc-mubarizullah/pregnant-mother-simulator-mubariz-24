@@ -9,11 +9,19 @@ public class Glass : MonoBehaviour, IInteractWithIneractables
     WaterBottle waterBottle;
     [SerializeField] GameObject waterInsideGlass;
     public event EventHandler OnWaterDrunk;
+
+    private void OnEnable()
+    {
+        waterBottle = FindAnyObjectByType<WaterBottle>();
+        waterBottle.OnPourWater += WaterBottle_OnPourWater;
+    }
+    private void OnDisable()
+    {
+        waterBottle.OnPourWater -= WaterBottle_OnPourWater;
+    }
     private void Start()
     {
         restPosition = transform.position;
-        waterBottle = FindAnyObjectByType<WaterBottle>();
-        waterBottle.OnPourWater += WaterBottle_OnPourWater;
     }
     public void Interact()
     {

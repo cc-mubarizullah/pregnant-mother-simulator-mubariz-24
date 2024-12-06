@@ -29,12 +29,9 @@ public class Objective01 : MonoBehaviour
     private void OnEnable()
     {
         eventsToCallWhenEnable?.Invoke();
-    }
-    private void Start()
-    {
-        
+
         foodItemAtStart = FindObjectsByType<FoodItem>(FindObjectsInactive.Include, FindObjectsSortMode.None);
-        foreach(FoodItem item in foodItemAtStart)
+        foreach (FoodItem item in foodItemAtStart)
         {
             item.gameObject.layer = 7;
             item.OnEatingHealthy += Item_OnEatingHealthy;
@@ -42,8 +39,8 @@ public class Objective01 : MonoBehaviour
         }
 
         objectiveShowUI.gameObject.SetActive(true);
-
     }
+    
     private void Update()
     {
         CheckingAllFoodItems();
@@ -122,7 +119,14 @@ public class Objective01 : MonoBehaviour
     private void OnDisable()
     {
         eventsToCallWhenDisable?.Invoke();
-        
+        foodItemAtStart = FindObjectsByType<FoodItem>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (FoodItem item in foodItemAtStart)
+        {
+            item.gameObject.layer = 0;
+            item.OnEatingHealthy -= Item_OnEatingHealthy;
+            item.OnEatingUnhealthy -= Item_OnEatingUnhealthy;
+        }
+
     }
 
 }

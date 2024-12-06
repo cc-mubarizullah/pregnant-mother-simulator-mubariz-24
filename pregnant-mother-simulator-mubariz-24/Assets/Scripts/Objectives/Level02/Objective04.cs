@@ -50,6 +50,7 @@ public class Objective04 : MonoBehaviour
             {
                 //objective complete here
                 OnObj04Complete?.Invoke(this, EventArgs.Empty);
+                telePhone.gameObject.layer = 0;       // set telephone non-interactive again
                 fourthObjectiveSO.isObjectiveComplete = true;
                 Destroy(gameObject, 0.1f);
             }
@@ -75,7 +76,6 @@ public class Objective04 : MonoBehaviour
     
     private void OnDisable()
     {
-        eventToCallWhenDisAble.Invoke();
-        telePhone.gameObject.layer = 0;       // set telephone non-interactive again
+        eventToCallWhenDisAble.Invoke();       
     }
 }
