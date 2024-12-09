@@ -8,6 +8,7 @@ public class Objective28 : MonoBehaviour
     [SerializeField] ObjectivesSO twentyEightObjective;
     [SerializeField] GameObject sleepingTransitionImageGO;
 
+
     public UnityEvent eventToHappenOnEnable;
     public UnityEvent eventToHappenOnDisEnable;
 

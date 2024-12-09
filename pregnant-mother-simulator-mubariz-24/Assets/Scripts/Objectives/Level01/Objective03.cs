@@ -6,7 +6,6 @@ public class Objective03 : MonoBehaviour
     [SerializeField] ObjectivesSO thirdObjectiveSO;
     [SerializeField] HintUI hintUI;
     [SerializeField] ObjectiveShowUI objectiveShowUI;
-    [SerializeField] GameObject levelCompletePanel;
     
 
     public UnityEvent eventsToCallWhenEnable;

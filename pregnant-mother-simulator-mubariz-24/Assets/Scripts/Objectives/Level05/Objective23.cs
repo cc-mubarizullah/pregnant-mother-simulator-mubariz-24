@@ -9,6 +9,7 @@ public class Objective23 : MonoBehaviour
     [SerializeField] GameObject diaperGameObject;
     [SerializeField] DropArea dropAreaComponentOfDiaper;
 
+
     public UnityEvent eventsToCallWhenEnable;
     public UnityEvent eventsToCallWhenDisable;
 

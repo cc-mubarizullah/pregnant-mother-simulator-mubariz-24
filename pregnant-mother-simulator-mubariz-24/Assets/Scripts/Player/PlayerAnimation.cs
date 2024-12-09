@@ -9,6 +9,7 @@ public class PlayerAnimation : MonoBehaviour
     private void Player_OnPhysicalInteraction()
     {
         animator.SetBool("interact", true);
+        Debug.Log("working");
     }
 
     public void ResetInteract()
@@ -22,7 +23,7 @@ public class PlayerAnimation : MonoBehaviour
     }
     private void OnDisable()
     {
-        player.OnPhysicalInteraction -= Player_OnPhysicalInteraction;
+        player.OnPhysicalInteraction -= Player_OnPhysicalInteraction;       
     }
 
 
