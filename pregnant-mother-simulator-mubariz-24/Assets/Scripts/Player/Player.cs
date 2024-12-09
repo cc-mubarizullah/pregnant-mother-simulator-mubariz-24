@@ -18,7 +18,8 @@ public class Player : MonoBehaviour
     {
         public bool intracting;
     }
-
+    [SerializeField] Transform playerPositionInHome;
+    [SerializeField] Transform playerPositionInClinic;
 
     [Header("Essentials")]
 
@@ -54,6 +55,20 @@ public class Player : MonoBehaviour
     [SerializeField] LayerMask interactLayer;
 
     public bool canMove;
+    public static bool inHome;
+
+
+    private void OnEnable()
+    {
+        if (inHome)
+        {
+            transform.position = playerPositionInHome.position;
+        }
+        else
+        {
+            transform.position = playerPositionInClinic.position;
+        }
+    }
     private void Start()
     {
         canMove = true;
@@ -64,11 +79,12 @@ public class Player : MonoBehaviour
         if (Instance != null)
             Debug.LogError("there are more than one instance of player");
         Instance = this;
-
+       
     }
 
     private void Update()
     {
+
         if (canMove)
         {
             Movement();

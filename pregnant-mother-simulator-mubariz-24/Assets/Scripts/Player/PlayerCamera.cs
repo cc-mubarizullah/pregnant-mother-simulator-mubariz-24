@@ -16,6 +16,11 @@ public class PlayerCamera : MonoBehaviour
 
     float cameraPitch;
 
+    private void OnEnable()
+    {
+        sensitiviySlider.onValueChanged.AddListener(OnCamerSensitivityChanged);
+    }
+
     private void Start()
     {
         cameraSentivity = 5f;
@@ -95,5 +100,9 @@ public class PlayerCamera : MonoBehaviour
     private void OnCamerSensitivityChanged(float value)
     {
         cameraSentivity = value;
+    }
+    private void OnDisable()
+    {
+        sensitiviySlider.onValueChanged.AddListener(OnCamerSensitivityChanged);
     }
 }

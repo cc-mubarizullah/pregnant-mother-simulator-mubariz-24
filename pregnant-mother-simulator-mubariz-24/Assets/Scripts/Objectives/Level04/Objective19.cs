@@ -8,6 +8,7 @@ public class Objective19 : MonoBehaviour
     [SerializeField] ObjectivesSO nineteenthObjective;
     [SerializeField] GameObject sleepingTransitionImageGO;
 
+
     public UnityEvent eventToHappenOnEnable;
     public UnityEvent eventToHappenOnDisEnable;
 

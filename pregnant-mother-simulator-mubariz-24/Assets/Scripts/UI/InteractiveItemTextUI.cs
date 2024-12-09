@@ -16,9 +16,10 @@ public class InteractiveItemTextUI : MonoBehaviour
         Instance = this;
     }
 
-    private void Start()
+    private void OnEnable()
     {
         Player.OnIntract += Player_OnIntract;
+        
     }
 
     private void Player_OnIntract(object sender, Player.OnIntractEventArgs e)
@@ -44,6 +45,9 @@ public class InteractiveItemTextUI : MonoBehaviour
             item.gameObject.SetActive(isPlayerIntracting);
         }
     }
+    private void OnDisable()
+    {
+        Player.OnIntract -= Player_OnIntract;
+    }
 
-   
 }

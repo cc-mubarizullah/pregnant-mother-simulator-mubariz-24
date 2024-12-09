@@ -8,6 +8,7 @@ public class Objective28 : MonoBehaviour
     [SerializeField] ObjectivesSO twentyEightObjective;
     [SerializeField] GameObject sleepingTransitionImageGO;
 
+
     public UnityEvent eventToHappenOnEnable;
     public UnityEvent eventToHappenOnDisEnable;
 
@@ -67,7 +68,7 @@ public class Objective28 : MonoBehaviour
         {
             if (DelayObjAfterComplete())
             {
-                //LEVEL 2 COMPLETES HERE
+                //LEVEL 6 COMPLETES HERE
                 OnObj28Complete?.Invoke(this, EventArgs.Empty);
                 Destroy(gameObject, 2f);
             }
