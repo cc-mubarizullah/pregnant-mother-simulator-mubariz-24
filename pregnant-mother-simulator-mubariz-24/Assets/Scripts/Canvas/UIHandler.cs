@@ -8,7 +8,6 @@ public class UIHandler : MonoBehaviour
     [SerializeField] GameObject musicOffButton;
     [SerializeField] GameObject musicManagerGO;
     [SerializeField] GameObject pausePanel;
-    [SerializeField] GameObject level2ToLevel6;
     bool musicPlaying = false;
     public void SettingButton()
     {

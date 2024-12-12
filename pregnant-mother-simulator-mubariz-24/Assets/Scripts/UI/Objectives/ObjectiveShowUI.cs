@@ -1,8 +1,8 @@
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 public class ObjectiveShowUI : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI objectiveTextUI;
+    [SerializeField] Text objectiveTextUI;
     [Tooltip("This transform will hold the child of gameobject which holds the whole objective UI. In this the gameobject named emptyParent.")]
 
 

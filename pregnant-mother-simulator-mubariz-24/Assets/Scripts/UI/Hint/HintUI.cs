@@ -1,9 +1,9 @@
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 public class HintUI : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI hintTextUI;
+    [SerializeField] Text hintTextUI;
    
     public void ShowHintText(string textToShow)
     {

@@ -1,12 +1,12 @@
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 // this class is singleton ...i.e it can be accessed from anywhere
 public class InteractiveItemTextUI : MonoBehaviour
 {
     public static InteractiveItemTextUI Instance { get; private set; }
 
-    [SerializeField] TextMeshProUGUI itemText;
+    [SerializeField] Text itemText;
 
     [SerializeField] Transform[] intractImageAndText;
 

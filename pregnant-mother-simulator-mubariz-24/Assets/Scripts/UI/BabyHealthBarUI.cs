@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 // Script should be attached with UI gameobject that has image gameobject as a children
