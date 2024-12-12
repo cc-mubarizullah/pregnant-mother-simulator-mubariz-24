@@ -6,7 +6,8 @@ public class Objective04 : MonoBehaviour
 {
     [SerializeField] ObjectivesSO fourthObjectiveSO;
     [SerializeField] ObjectiveShowUI objectiveShowUI;
-    
+    [SerializeField] Transform playerPositionInHome;
+
     public UnityEvent eventsToCallWhenEnable;
     public UnityEvent eventToCallWhenDisAble;
     
@@ -22,6 +23,7 @@ public class Objective04 : MonoBehaviour
     {
         eventsToCallWhenEnable.Invoke();
         telePhone = FindAnyObjectByType<Telephone>();
+        Player.Instance.transform.position = playerPositionInHome.position;
     }
 
 

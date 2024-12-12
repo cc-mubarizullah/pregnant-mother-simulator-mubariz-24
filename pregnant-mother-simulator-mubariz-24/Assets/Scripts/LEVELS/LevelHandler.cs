@@ -5,7 +5,9 @@ public class LevelHandler : MonoBehaviour
     private string levelName;
     [SerializeField] GameObject[] allLevels;
     [SerializeField] GameObject levelCompletePanel;
-    int currentLevelIndex = 0;
+    [SerializeField] Transform playerPosInHome;
+    [SerializeField] Transform playerPosInOffice;
+     public static int currentLevelIndex = 0;
 
     private void Start()
     {
@@ -37,6 +39,14 @@ public class LevelHandler : MonoBehaviour
         {
             currentLevelIndex++;
             UpdateLevelVisibilty();
+            if (allLevels[2].activeSelf)
+            {
+                Player.Instance.transform.position = playerPosInOffice.position;
+            }
+            else
+            {
+                Player.Instance.transform.position = playerPosInHome.position;
+            }
         }
         levelCompletePanel.SetActive(false); 
     }

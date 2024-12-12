@@ -9,6 +9,7 @@ public class Objective09 : MonoBehaviour
     [SerializeField] Objective9Trigger objective9Trigger;
     [SerializeField] GameObject reportInHand;
     [SerializeField] GameObject reportOnTable;
+    [SerializeField] Transform playerPositionInOffice;
 
     public UnityEvent eventToHappenOnEnable;
     public UnityEvent eventToHappenOnDisEnable;
@@ -23,6 +24,7 @@ public class Objective09 : MonoBehaviour
     private void OnEnable()
     {
         eventToHappenOnEnable.Invoke();
+        Player.Instance.transform.position = playerPositionInOffice.position;
 
     }
 

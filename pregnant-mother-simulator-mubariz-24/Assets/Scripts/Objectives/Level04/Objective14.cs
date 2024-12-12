@@ -8,6 +8,7 @@ public class Objective14 : MonoBehaviour
 
     [SerializeField] ObjectivesSO fourteenthObjectiveSO;
     [SerializeField] ObjectiveShowUI objectiveShowUI;
+    [SerializeField] Transform playerPositionInHome;
     [SerializeField] HintUI hintUI;
 
     [SerializeField] string textOnEatingUnhealthyFood;
@@ -29,6 +30,7 @@ public class Objective14 : MonoBehaviour
     private void OnEnable()
     {
         eventsToCallWhenEnable?.Invoke();
+        Player.Instance.transform.position = playerPositionInHome.position;
     }
     private void Start()
     {

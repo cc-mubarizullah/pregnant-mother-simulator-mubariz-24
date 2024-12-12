@@ -8,6 +8,7 @@ public class Objective20 : MonoBehaviour
     [SerializeField] ObjectiveShowUI objectiveShowUI;
     [SerializeField] GameObject feederGameObject;
     [SerializeField] DropArea dropAreaComponentOfFeeder;
+    [SerializeField] Transform playerPositionInHome;
 
     public UnityEvent eventsToCallWhenEnable;
     public UnityEvent eventsToCallWhenDisable;
@@ -23,6 +24,7 @@ public class Objective20 : MonoBehaviour
     private void OnEnable()
     {
         eventsToCallWhenEnable?.Invoke();
+        Player.Instance.transform.position = playerPositionInHome.position;
     }
 
     private void Start()
