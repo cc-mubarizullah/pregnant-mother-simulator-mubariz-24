@@ -33,6 +33,7 @@ public class FoodItem : MonoBehaviour, IInteractWithIneractables, IInventoryHand
 
     public void PhysicalInteract()
     {
+        SFXmanager.Instance.PlayRandomSoundEffectOnPosition(SFXmanager.Instance.swallowFood1, SFXmanager.Instance.swallowFood2, Player.Instance.transform.position, 1f);
         switch (foodType)
         {
             case FoodType.Healthy:

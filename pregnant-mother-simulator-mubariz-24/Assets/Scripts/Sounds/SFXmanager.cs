@@ -11,6 +11,8 @@ public class SFXmanager : MonoBehaviour
     public AudioClip waterPouringSFX;
     public AudioClip waterDrinkSFX;
     public AudioClip hintSFX;
+    public AudioClip swallowFood1;
+    public AudioClip swallowFood2;
 
 
     public static SFXmanager Instance { get; private set; }
@@ -27,5 +29,10 @@ public class SFXmanager : MonoBehaviour
     public void PlaySoundEffectOnPosition(AudioClip audioClip, Vector3 position, float volume = 1f)
     {
         AudioSource.PlayClipAtPoint(audioClip, position, volume);
+    }
+    public void PlayRandomSoundEffectOnPosition(AudioClip audioClip1, AudioClip audioClip2, Vector3 position, float volume = 1f)
+    {
+        AudioClip randomAudio = Random.Range(0, 2) == 0 ? audioClip1 : audioClip2; 
+        AudioSource.PlayClipAtPoint(randomAudio, position, volume);
     }
 }
