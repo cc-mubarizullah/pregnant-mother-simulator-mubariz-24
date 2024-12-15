@@ -54,11 +54,11 @@ public class PlayerCamera : MonoBehaviour
             switch (t.phase)
             {
                 case TouchPhase.Began:
-                    if (t.position.x > halfOfScreenWidth && rightFingerId == -1)
+                    if (t.position.x < halfOfScreenWidth && rightFingerId == -1)
                     {
                         rightFingerId = t.fingerId;
                     }
-                    else if (t.position.x < halfOfScreenWidth && leftFingerId == -1)
+                    else if (t.position.x > halfOfScreenWidth && leftFingerId == -1)
                     {
                         leftFingerId = t.fingerId;
                     }
